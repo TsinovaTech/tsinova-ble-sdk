@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="sdk_bltmanager_toast_tips_not_ble">설비가 BLE를 지지하지 않음</string>
+    <string name="sdk_bltmanager_toast_tips_ble_connect_fail">블루투스 연결실패/n잠시후 재시도</string>
+    <string name="sdk_bltmanager_search_bl_dialog_title">주변의 설비를 검색하시겠습니까?</string>
+    <string name="sdk_bltmanager_search_bl_dialog_content">확인을 눌러 검색창에 들어가세요</string>
+    <string name="sdk_bltmanager_search_bl_dialog_cancel">취소</string>
+    <string name="sdk_bltmanager_search_bl_dialog_ok">확인</string>
+</resources>

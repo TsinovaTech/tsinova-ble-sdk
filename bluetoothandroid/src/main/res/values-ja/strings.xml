@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="sdk_bltmanager_toast_tips_not_ble">BLEは利用できません</string>
+    <string name="sdk_bltmanager_toast_tips_ble_connect_fail">ブルートゥースに接続できないので、しばらく待ってやり直してください</string>
+    <string name="sdk_bltmanager_search_bl_dialog_title">周りの設備を捜索しますか？</string>
+    <string name="sdk_bltmanager_search_bl_dialog_content">「はい」をクリックして捜索画面に入ってください</string>
+    <string name="sdk_bltmanager_search_bl_dialog_cancel">キャンセル</string>
+    <string name="sdk_bltmanager_search_bl_dialog_ok">確定</string>
+</resources>

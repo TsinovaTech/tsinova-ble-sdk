@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">BlueToothAndroid</string>
+
+    <string name="sdk_bltmanager_toast_tips_not_ble">BLE is not supported for your device</string>
+    <string name="sdk_bltmanager_toast_tips_ble_connect_fail">Bluetooth connection failed, please try later</string>
+    <string name="sdk_bltmanager_search_bl_dialog_title">Do you want to search peripheral devices?</string>
+    <string name="sdk_bltmanager_search_bl_dialog_content">Please click Confirm to enter the search page</string>
+    <string name="sdk_bltmanager_search_bl_dialog_cancel">Cancel</string>
+    <string name="sdk_bltmanager_search_bl_dialog_ok">Confirm</string>
 </resources>
