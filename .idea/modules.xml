@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/BlueToothAndroid.iml" filepath="$PROJECT_DIR$/BlueToothAndroid.iml" />
       <module fileurl="file://C:\Users\ihgoo\Documents\TsinovaBluetooth\BlueToothAndroid.iml" filepath="C:\Users\ihgoo\Documents\TsinovaBluetooth\BlueToothAndroid.iml" />
       <module fileurl="file://$PROJECT_DIR$/TsinovaBluetooth.iml" filepath="$PROJECT_DIR$/TsinovaBluetooth.iml" />
       <module fileurl="file://$PROJECT_DIR$/bluetoothandroid/bluetoothandroid.iml" filepath="$PROJECT_DIR$/bluetoothandroid/bluetoothandroid.iml" />
