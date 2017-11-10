@@ -2,28 +2,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-	android:background="@null"
-	android:gravity="center" >
+    android:background="@null"
+    android:gravity="center"
+    android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="200dp"
         android:layout_height="100dp"
-        android:orientation="vertical"
-        android:gravity="center"
         android:background="@drawable/toast_round_bg_black"
-        >
-    <ImageView 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/tips_erro"
-        android:contentDescription="@null"/>
-	<TextView 
-	    android:id="@+id/toast_contant"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-		android:gravity="center"
-        android:layout_marginTop="13dp"
-	    android:textColor="@color/white"
-	    android:textSize="14sp"/>
-</LinearLayout>
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@null"
+            android:src="@drawable/tips_erro" />
+
+        <TextView
+            android:id="@+id/toast_contant"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+    </LinearLayout>
 </LinearLayout>
