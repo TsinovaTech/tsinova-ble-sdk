@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion 26
@@ -22,6 +23,10 @@ android {
         }
     }
 
+    lintOptions {
+        abortOnError false
+    }
+
 }
 
 dependencies {
@@ -35,6 +40,13 @@ dependencies {
     compile 'org.greenrobot:eventbus:3.0.0'
     compile 'com.getkeepsafe.relinker:relinker:1.2.1'
 
+}
 
-
+publish{
+    userOrg = 'warry19940712'//bintray.com用户名
+    groupId = 'com.tsinova'//jcenter上的路径
+    artifactId = 'TsinovaBluetooth'//项目名称
+    publishVersion = '1.0.0'//版本号
+    desc = 'A Bluetooth module to control E-Bike of Tsinova '//描述，不重要
+    website = 'https://github.com/TsinovaTech/TsinovaBluetooth'//网站，最好有，不重要
 }
