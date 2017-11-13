@@ -1,4 +1,4 @@
-package com.tsinova.bluetoothandroid.util;
+package com.tsinova.bike.util;
 
 
 import com.getkeepsafe.relinker.ReLinker;

@@ -27,7 +27,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.tsinova.bluetoothandroid.adapter.TimestampTypeAdapter;
-import com.tsinova.bluetoothandroid.common.Constant;
 import com.tsinova.bluetoothandroid.core.event.ConnBlueToothEvent;
 import com.tsinova.bluetoothandroid.core.event.ConnedEvent;
 import com.tsinova.bluetoothandroid.core.event.ContactFailEvent;
@@ -35,7 +34,7 @@ import com.tsinova.bluetoothandroid.pojo.BlueToothRequstInfo;
 import com.tsinova.bluetoothandroid.pojo.BlueToothResponseInfo;
 import com.tsinova.bluetoothandroid.pojo.SingletonBTInfo;
 import com.tsinova.bluetoothandroid.util.CommonUtils;
-import com.tsinova.bluetoothandroid.util.DESPlus;
+import com.tsinova.bike.util.DESPlus;
 import com.tsinova.bluetoothandroid.util.StringUtils;
 import com.tsinova.bluetoothandroid.util.UIUtils;
 

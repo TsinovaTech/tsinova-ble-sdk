@@ -36,7 +36,7 @@ import android.util.Log;
 
 import com.tsinova.bluetoothandroid.pojo.SingletonBTInfo;
 import com.tsinova.bluetoothandroid.util.CommonUtils;
-import com.tsinova.bluetoothandroid.util.DESPlus;
+import com.tsinova.bike.util.DESPlus;
 import com.tsinova.bluetoothandroid.util.StringUtils;
 
 import java.util.List;
