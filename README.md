@@ -11,7 +11,7 @@
 ## Gradle集成
 
  ``` 
- compile('com.tsinova:TsinovaBluetooth:1.0.2') {
+ compile('com.tsinova:TsinovaBluetooth:1.0.3') {
         transitive = true
         exclude group: 'com.google.code.gson', module: 'gson'
         exclude group: 'org.greenrobot', module: 'eventbus'
