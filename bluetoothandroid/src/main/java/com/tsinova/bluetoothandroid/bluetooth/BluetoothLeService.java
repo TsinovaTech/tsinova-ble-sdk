@@ -34,6 +34,9 @@ import android.os.IBinder;
 import android.util.Log;
 
 
+import com.tsinova.bluetoothandroid.exception.TsinovaApplicationNotFoundException;
+import com.tsinova.bluetoothandroid.exception.TsinovaBikeBtNumberNotFoundException;
+import com.tsinova.bluetoothandroid.exception.TsinovaPackNameNotFoundException;
 import com.tsinova.bluetoothandroid.pojo.SingletonBTInfo;
 import com.tsinova.bluetoothandroid.util.CommonUtils;
 import com.tsinova.bike.util.DESPlus;
@@ -71,7 +74,7 @@ public class BluetoothLeService extends Service {
     public final static String ACTION_DATA_WRITE_CALLBAK =
             SingletonBTInfo.INSTANCE.getPageName() + ".le.ACTION_DATA_WRITE_CALLBAK";
     public final static String EXTRA_DATA = SingletonBTInfo.INSTANCE.getPageName() + ".le.EXTRA_DATA";
-    public final static String UPDATE_FIRMWARE = "0le.UPDATE_FIRMWARE";
+    public final static String UPDATE_FIRMWARE = ".le.UPDATE_FIRMWARE";
 
     // Implements callback methods for GATT events that the app cares about.  For example,
     // connection change and services discovered.
@@ -97,7 +100,7 @@ public class BluetoothLeService extends Service {
 
         @Override
         public void onServicesDiscovered(BluetoothGatt gatt, int status) {
-        	Log.i(TAG, "onServicesDiscovered  status : " + status);
+            Log.i(TAG, "onServicesDiscovered  status : " + status);
 
             if (status == BluetoothGatt.GATT_SUCCESS) {
                 broadcastUpdate(ACTION_GATT_SERVICES_DISCOVERED);
@@ -108,22 +111,24 @@ public class BluetoothLeService extends Service {
 
         @Override
         public void onCharacteristicRead(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic, int status) {
-        	Log.i(TAG, "onCharacteristicRead  status : " + status);
+            Log.i(TAG, "onCharacteristicRead  status : " + status);
         }
 
         @Override
         public void onCharacteristicChanged(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic) {
-        	Log.i(TAG, "onCharacteristicChanged ------->  : " + characteristic.getUuid());
+            Log.i(TAG, "onCharacteristicChanged ------->  : " + characteristic.getUuid());
             broadcastUpdate(ACTION_DATA_AVAILABLE, characteristic);
         }
-        
+
         @Override
         public void onCharacteristicWrite(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic, int status) {
-        	String result = new String(characteristic.getValue());
-        	if (mOnGattWriteLisener != null){
-        		mOnGattWriteLisener.onCharacteristicWrite(result, false);
-        	}
-        };
+            String result = new String(characteristic.getValue());
+            if (mOnGattWriteLisener != null) {
+                mOnGattWriteLisener.onCharacteristicWrite(result, false);
+            }
+        }
+
+        ;
     };
 
     private void broadcastUpdate(final String action) {
@@ -131,31 +136,31 @@ public class BluetoothLeService extends Service {
         sendBroadcast(intent);
     }
 
-    
-    public byte[] byteMerger(byte[] byte_1, byte[] byte_2){  
-    	if(byte_1 == null && byte_2 == null){
-    		return null;
-    	}
-    	if(byte_1 == null && byte_2 != null && byte_2.length > 0){
-    		return byte_2;
-    	}
-        byte[] byte_3 = new byte[byte_1.length + byte_2.length];  
+
+    public byte[] byteMerger(byte[] byte_1, byte[] byte_2) {
+        if (byte_1 == null && byte_2 == null) {
+            return null;
+        }
+        if (byte_1 == null && byte_2 != null && byte_2.length > 0) {
+            return byte_2;
+        }
+        byte[] byte_3 = new byte[byte_1.length + byte_2.length];
         System.arraycopy(byte_1, 0, byte_3, 0, byte_1.length);
         System.arraycopy(byte_2, 0, byte_3, byte_1.length, byte_2.length);
-        return byte_3;  
-    }  
-    
+        return byte_3;
+    }
+
 //    private void broadcastUpdate(String action, BluetoothGattCharacteristic characteristic){
 //    	broadcastUpdate(action, characteristic, false);
 //    }
 
     private boolean isUpdateFirmware;
     private int charChangeNum;
-    private byte[] byteBuffer; 
+    private byte[] byteBuffer;
     private StringBuffer stringBuffer = new StringBuffer();
 //    private SingletonBTInfo mSingletonBTInfo;
 
-    public void setUpdateFirmwareFinish(){
+    public void setUpdateFirmwareFinish() {
         isUpdateFirmware = false;
     }
 
@@ -163,56 +168,80 @@ public class BluetoothLeService extends Service {
      * 用于监听蓝牙返回数据
      */
     private void broadcastUpdate(final String action, final BluetoothGattCharacteristic characteristic) {
-    	if (!BikeBlueToothUtils.isBikeCharNotifyProperties(characteristic.getUuid())){
-    		return;
-    	}
+        if (!BikeBlueToothUtils.isBikeCharNotifyProperties(characteristic.getUuid())) {
+            return;
+        }
         final Intent intent = new Intent(action);
         intent.putExtra(UPDATE_FIRMWARE, isUpdateFirmware);
-		if (BikeBlueToothUtils.isBikeCharNotifyProperties(characteristic.getUuid())) {
-			try {
-				if (this.isUpdateFirmware) {// 固件升级不加密
-					String key = StringUtils.getBikeKey(SingletonBTInfo.INSTANCE.getBikeBluetoothNumber());
-					byte[] value = DESPlus.getInstant().decryptDES(characteristic.getValue(), (key));
+        if (BikeBlueToothUtils.isBikeCharNotifyProperties(characteristic.getUuid())) {
+            try {
+                if (this.isUpdateFirmware) {// 固件升级不加密
+
+
+                    byte[] value ;
+                    if (SingletonBTInfo.INSTANCE.isEncryption()){
+                        String key = StringUtils.getBikeKey(SingletonBTInfo.INSTANCE.getBikeBluetoothNumber());
+                        value = DESPlus.getInstant().decryptDES(characteristic.getValue(), (key));
+                    }else {
+                        value = characteristic.getValue();
+                    }
+
+
 //
 //                    byte[] value = Des.decryptDES(characteristic.getValue(), (key));
 
-					String data = new String(value);
-					CommonUtils.log("broadcastUpdate isUpdateFirmware----> data : "+ data);
-					if(mOnGattWriteLisener != null){
-						mOnGattWriteLisener.onCharacteristicWrite(data, true);
-					} else {
-						intent.putExtra(EXTRA_DATA, data);
-						sendBroadcast(intent);
-					}
-				} else { // 行驶状态加密
-					byte[] data = characteristic.getValue();
+                    String data = new String(value);
+                    CommonUtils.log("broadcastUpdate isUpdateFirmware----> data : " + data);
+                    if (mOnGattWriteLisener != null) {
+                        mOnGattWriteLisener.onCharacteristicWrite(data, true);
+                    } else {
+                        intent.putExtra(EXTRA_DATA, data);
+                        sendBroadcast(intent);
+                    }
+                } else { // 行驶状态加密
+                    byte[] data = characteristic.getValue();
 
 
+                    if (data != null && data.length > 0) {
+                        String v = new String(data);
 
-					if (data != null && data.length > 0) {
-						String v = new String(data);
-						String key = StringUtils.getBikeKey(SingletonBTInfo.INSTANCE.getBikeBluetoothNumber());
-						byte[] value = DESPlus.getInstant().decryptDES(data, (key));
+                        byte[] value;
+                        if (SingletonBTInfo.INSTANCE.isEncryption()){
+                            String key = StringUtils.getBikeKey(SingletonBTInfo.INSTANCE.getBikeBluetoothNumber());
+                            value = DESPlus.getInstant().decryptDES(data, (key));
+                        }else {
+                            value = data;
+                        }
+
+
 //
 //                        byte[] value = Des.decryptDES(data, (key));
 
 
-						String sValue = new String(value);
-						CommonUtils.log(TAG, "broadcastUpdate ----> sValue : "+ sValue +" / data.length : "+ data.length );
-						if (sValue.startsWith("{\"da\"")) {
-							charChangeNum = 0;
-							byteBuffer = null;
-							stringBuffer = null;
-							stringBuffer = new StringBuffer();
-						}
-						byteBuffer = byteMerger(byteBuffer, data);
-						stringBuffer.append(sValue);
-						charChangeNum++;
-					}
+                        String sValue = new String(value);
+                        CommonUtils.log(TAG, "broadcastUpdate ----> sValue : " + sValue + " / data.length : " + data.length);
+                        if (sValue.startsWith("{\"da\"")) {
+                            charChangeNum = 0;
+                            byteBuffer = null;
+                            stringBuffer = null;
+                            stringBuffer = new StringBuffer();
+                        }
+                        byteBuffer = byteMerger(byteBuffer, data);
+                        stringBuffer.append(sValue);
+                        charChangeNum++;
+                    }
 
-					if (byteBuffer != null && byteBuffer.length > 0) {
-                        String key = StringUtils.getBikeKey(SingletonBTInfo.INSTANCE.getBikeBluetoothNumber());
-                        byte[] result = DESPlus.getInstant().decryptDES((byteBuffer), (key));
+                    if (byteBuffer != null && byteBuffer.length > 0) {
+
+                        byte[] result;
+                        if (SingletonBTInfo.INSTANCE.isEncryption()){
+                            String key = StringUtils.getBikeKey(SingletonBTInfo.INSTANCE.getBikeBluetoothNumber());
+                            result = DESPlus.getInstant().decryptDES((byteBuffer), (key));
+                        }else {
+                            result = byteBuffer;
+                        }
+
+
 //
 //                        byte[] result = Des.decryptDES(byteBuffer, (key));
 
@@ -229,14 +258,14 @@ public class BluetoothLeService extends Service {
                             charChangeNum = 0;
                             stringBuffer = null;
                         }
-					}
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else {
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
 
-		}
+        }
     }
 
     public class LocalBinder extends Binder {
@@ -267,6 +296,20 @@ public class BluetoothLeService extends Service {
      * @return Return true if the initialization is successful.
      */
     public boolean initialize() {
+        if (SingletonBTInfo.INSTANCE.getApplicationContext() == null) {
+            throw new TsinovaApplicationNotFoundException("call SingletionBTInfo.setApplicationContext() method first");
+        }
+
+        if (SingletonBTInfo.INSTANCE.getApplicationContext() == null) {
+            throw new TsinovaPackNameNotFoundException("call SingletionBTInfo.setPageName() method first");
+        }
+
+        if (SingletonBTInfo.INSTANCE.getApplicationContext() == null) {
+            throw new TsinovaBikeBtNumberNotFoundException("call SingletionBTInfo.setBikeBluetoothNumber() method first");
+        }
+
+
+
         // For API level 18 and above, get a reference to BluetoothAdapter through
         // BluetoothManager.
         if (mBluetoothManager == null) {
@@ -290,11 +333,10 @@ public class BluetoothLeService extends Service {
      * Connects to the GATT server hosted on the Bluetooth LE device.
      *
      * @param address The device address of the destination device.
-     *
      * @return Return true if the connection is initiated successfully. The connection result
-     *         is reported asynchronously through the
-     *         {@code BluetoothGattCallback#onConnectionStateChange(android.bluetooth.BluetoothGatt, int, int)}
-     *         callback.
+     * is reported asynchronously through the
+     * {@code BluetoothGattCallback#onConnectionStateChange(android.bluetooth.BluetoothGatt, int, int)}
+     * callback.
      */
     public boolean connect(final String address) {
         if (mBluetoothAdapter == null || address == null) {
@@ -355,7 +397,7 @@ public class BluetoothLeService extends Service {
         try {
             mBluetoothGatt.close();
             mBluetoothGatt = null;
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
 
@@ -375,38 +417,37 @@ public class BluetoothLeService extends Service {
 //        }
 //        mBluetoothGatt.readCharacteristic(characteristic);
 //    }
-    
     public boolean writeCharacteristic(BluetoothGattCharacteristic characteristic, boolean isUpdateFirmware) {
-    	if (mBluetoothAdapter == null || mBluetoothGatt == null) {
-    		Log.w(TAG, "BluetoothAdapter not initialized");
-    		return false;
-    	}
-    	this.isUpdateFirmware = isUpdateFirmware;
-    	return mBluetoothGatt.writeCharacteristic(characteristic);
+        if (mBluetoothAdapter == null || mBluetoothGatt == null) {
+            Log.w(TAG, "BluetoothAdapter not initialized");
+            return false;
+        }
+        this.isUpdateFirmware = isUpdateFirmware;
+        return mBluetoothGatt.writeCharacteristic(characteristic);
     }
-    
+
     /**
      * 升级固件专用
      */
-    public boolean updateFirmware(BluetoothGattCharacteristic characteristic, BikeBlueToothManager.OnGattWriteLisener lisener){
-    	if (mBluetoothAdapter == null || mBluetoothGatt == null) {
-    		Log.w(TAG, "BluetoothAdapter not initialized");
-    		return false;
-    	}
-    	isUpdateFirmware = true;
-    	mOnGattWriteLisener = lisener;
-    	return mBluetoothGatt.writeCharacteristic(characteristic);
+    public boolean updateFirmware(BluetoothGattCharacteristic characteristic, BikeBlueToothManager.OnGattWriteLisener lisener) {
+        if (mBluetoothAdapter == null || mBluetoothGatt == null) {
+            Log.w(TAG, "BluetoothAdapter not initialized");
+            return false;
+        }
+        isUpdateFirmware = true;
+        mOnGattWriteLisener = lisener;
+        return mBluetoothGatt.writeCharacteristic(characteristic);
     }
-    
-    public void setOnGattWriteLisener(BikeBlueToothManager.OnGattWriteLisener lisener){
-    	this.mOnGattWriteLisener = lisener;
+
+    public void setOnGattWriteLisener(BikeBlueToothManager.OnGattWriteLisener lisener) {
+        this.mOnGattWriteLisener = lisener;
     }
-    
+
     /**
      * Enables or disables notification on a give characteristic.
      *
      * @param characteristic Characteristic to act on.
-     * @param enabled If true, enable notification.  False otherwise.
+     * @param enabled        If true, enable notification.  False otherwise.
      */
     public void setCharacteristicNotification(BluetoothGattCharacteristic characteristic,
                                               boolean enabled) {
@@ -417,11 +458,11 @@ public class BluetoothLeService extends Service {
         mBluetoothGatt.setCharacteristicNotification(characteristic, enabled);
 
         if (BikeBlueToothUtils.isBikeCharNotifyProperties(characteristic.getUuid())) {
-        	if(characteristic.getDescriptors() != null && characteristic.getDescriptors().size() > 0){
-        		BluetoothGattDescriptor descriptor = characteristic.getDescriptors().get(0);
-        		 descriptor.setValue(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
-                 mBluetoothGatt.writeDescriptor(descriptor);
-        	}
+            if (characteristic.getDescriptors() != null && characteristic.getDescriptors().size() > 0) {
+                BluetoothGattDescriptor descriptor = characteristic.getDescriptors().get(0);
+                descriptor.setValue(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
+                mBluetoothGatt.writeDescriptor(descriptor);
+            }
         }
     }
 
