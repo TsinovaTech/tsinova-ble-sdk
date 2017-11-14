@@ -35,7 +35,6 @@ import com.tsinova.bike.util.DESPlus;
 import com.tsinova.bluetoothandroid.util.StringUtils;
 import com.tsinova.bluetoothandroid.util.UIUtils;
 
-import org.greenrobot.eventbus.EventBus;
 
 import java.sql.Timestamp;
 import java.util.List;
