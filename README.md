@@ -33,7 +33,10 @@ SingletonBTInfo.INSTANCE.setBikeBluetoothNumber(bikeBluetoothNumber);
 SingletonBTInfo.INSTANCE.setPageName("pageName");
 ```
 3.连接电单车代码请看BluetoothManager.class
-
+4.如果你的电单车蓝牙传输数据不需要加密，请在第二步之前调用该方法
+```
+SingletonBTInfo.INSTANCE.setEncryption(false);
+```
 
 
 
