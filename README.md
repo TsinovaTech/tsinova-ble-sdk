@@ -9,6 +9,7 @@
 
 
 ## Gradle集成
+## Gradle integration 
 
  ``` 
  compile('com.tsinova:TsinovaBluetooth:1.0.3') {
@@ -20,24 +21,33 @@
   ```
   
 ## 快速开始
-1.请在清单文件中声明以下service
+## Rapid Starting 
+
+1.请在清单文件中声明以下service (Please state the following service in the list of files)
+
  ``` 
 <service
             android:name="com.tsinova.bluetoothandroid.bluetooth.BluetoothLeService"
             android:enabled="true" />
 ``` 
-2.设置application context、bikeBluetoothNumber、pageName
+
+2.设置 (Configure) application context、bikeBluetoothNumber、pageName
+
 ```
 SingletonBTInfo.INSTANCE.setApplicationContext(applicationContext);
 SingletonBTInfo.INSTANCE.setBikeBluetoothNumber(bikeBluetoothNumber);
 SingletonBTInfo.INSTANCE.setPageName("pageName");
 
 //如果你的电单车蓝牙传输数据不需要加密，请调用以下方法，设置为false
+//If the Bluetooth transmission of your ebike isn’t necessarily encrypted, please utilize the following method, set to false
 SingletonBTInfo.INSTANCE.setEncryption(false);
 ```
-3.连接电单车代码请看BluetoothManager.class
-
-
+3.连接电单车代码请看BluetoothManager.class (Please refer to BluetoothManager.class for codes to connect to the ebike)
+```
+mManager.scanLeDevice()
+mManager.setScanCallBack()
+mManager.connect()
+```
 
 
 
