@@ -11,6 +11,18 @@ import com.tsinova.bluetoothandroid.util.CommonUtils;
 public enum SingletonBTInfo {
 
     INSTANCE;
+    private String bikeBluetoothNumber;
+    private String pageName;
+    private Context applicationContext;
+    private boolean isEncryption = true;
+
+    public boolean isEncryption() {
+        return isEncryption;
+    }
+
+    public void setEncryption(boolean encryption) {
+        isEncryption = encryption;
+    }
 
     public String getBikeBluetoothNumber() {
         CommonUtils.log(bikeBluetoothNumber);
@@ -39,8 +51,6 @@ public enum SingletonBTInfo {
         this.applicationContext = applicationContext;
     }
 
-    private String bikeBluetoothNumber;
-    private String pageName;
-    private Context applicationContext;
+
 
 }
