@@ -8,7 +8,7 @@
 [![License](https://img.shields.io/github/license/TsinovaTech/tsinova-ble-sdk.svg)](https://github.com/TsinovaTech/tsinova-ble-sdk/blob/master/LICENSE)
 
 
-# Gradle集成
+## Gradle集成
 
  ``` 
  compile('com.tsinova:TsinovaBluetooth:1.0.2') {
@@ -19,7 +19,7 @@
  } 
   ```
   
-# 快速开始
+## 快速开始
 1.请在清单文件中声明以下service
  ``` 
 <service
