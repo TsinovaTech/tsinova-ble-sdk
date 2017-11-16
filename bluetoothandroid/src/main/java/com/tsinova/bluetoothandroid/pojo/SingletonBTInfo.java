@@ -12,6 +12,7 @@ public enum SingletonBTInfo {
 
     INSTANCE;
     private String bikeBluetoothNumber;
+    private String bikeBluetoothaddress;
     private String pageName;
     private Context applicationContext;
     private boolean isEncryption = true;
@@ -31,6 +32,14 @@ public enum SingletonBTInfo {
 
     public void setBikeBluetoothNumber(String bikeBluetoothNumber) {
         this.bikeBluetoothNumber = bikeBluetoothNumber;
+    }
+
+    public String getBikeBluetoothaddress() {
+        return bikeBluetoothaddress;
+    }
+
+    public void setBikeBluetoothaddress(String bikeBluetoothaddress) {
+        this.bikeBluetoothaddress = bikeBluetoothaddress;
     }
 
     public String getPageName() {

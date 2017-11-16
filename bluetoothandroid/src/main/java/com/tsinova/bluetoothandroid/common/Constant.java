@@ -11,4 +11,6 @@ public class Constant {
     /** 日志TAG */
     public static final String LOG_TAG = "Tsinova BlueTooth SDK";
 
+    public static final int ACTIVITY_REQUEST_CONN_BIKE = 4008;
+
 }

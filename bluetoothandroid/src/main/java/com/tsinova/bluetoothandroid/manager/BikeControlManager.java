@@ -1,21 +1,15 @@
-package com.tsinova.bike.manager;
+package com.tsinova.bluetoothandroid.manager;
 
 import android.app.Activity;
-import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import android.view.KeyEvent;
 
 
 import com.tsinova.bluetoothandroid.bluetooth.BikeBlueToothManager;
-import com.tsinova.bluetoothandroid.common.Constant;
 import com.tsinova.bluetoothandroid.listener.CallBack1;
+import com.tsinova.bluetoothandroid.listener.OnAppBikeCallback;
 import com.tsinova.bluetoothandroid.listener.OnBikeCallback;
-import com.tsinova.bluetoothandroid.manage.BikeController;
 import com.tsinova.bluetoothandroid.pojo.BikeBlueToothInfo;
 import com.tsinova.bluetoothandroid.pojo.BlueToothRequstInfo;
 import com.tsinova.bluetoothandroid.pojo.BlueToothResponseInfo;
@@ -29,6 +23,7 @@ public class BikeControlManager extends BikeController {
 
     private static final String TAG = BikeControlManager.class.getSimpleName();
     private List<OnBikeCallback> mOnBikeCallbacks = new ArrayList<OnBikeCallback>();
+    private List<OnAppBikeCallback> mOnAppBikeCallbacks = new ArrayList<OnAppBikeCallback>();
     private static final int NOTIFY_TIMEOUT = 20 * 1000; // 蓝牙通信超时时间
     private FragmentActivity mActivity;
     private BlueToothRequstInfo mRequstInfo; // 发送蓝牙信息
@@ -148,6 +143,7 @@ public class BikeControlManager extends BikeController {
     @Override
     public void endDriving() {
 
+        appEndDriving();
      /**   try {//需要listener
             ControlFragment.setTipGONE();
         }catch (Exception e){
@@ -319,6 +315,7 @@ public class BikeControlManager extends BikeController {
                 isConnect = false;
 //                mIsCheckedUpdate = false;
                 disconnected();
+                appDisconnect();
             }
         }
 
@@ -375,6 +372,7 @@ public class BikeControlManager extends BikeController {
             }
 
             dataAvailable(mResponseInfo);
+            appDataAvailable(mResponseInfo);
 
 //            以下固件升级请求模块代码放在AppBikeControlManager里面。
 //            if (!mIsCheckedUpdate) { // 请求固件升级
@@ -422,6 +420,7 @@ public class BikeControlManager extends BikeController {
 //                BikePreferencesUtils.setConnected(mActivity);
                 CommonUtils.log("mOnGattNotifyLisener -----> onConnected " + " / isConnect :" + mBLEManager.isConnect());
                 connected();
+                appConnected();
                 isConnect = true;
                 checkTheConnect();
                 mBLEManager.setConnect(true);
@@ -435,6 +434,7 @@ public class BikeControlManager extends BikeController {
         @Override
         public void onLeScanEnd(boolean isFound) {
             scanBLEEnd(isFound);
+            scanAppBLEEnd(isFound);
             CommonUtils.log("MainActivity ------> onLeScanEnd , isAutoConnect :" + isAutoConnect + " /isFound :" + isFound);
             if (!isAutoConnect) {// 自动搜索蓝牙连接的时候不关闭dialog
                 isAutoConnect = false;
@@ -454,6 +454,7 @@ public class BikeControlManager extends BikeController {
         public void onConnectTimeOut() {
             CommonUtils.log("MainActivity ------> onConnectTimeOut");
             connectTimeOut();
+            appConnectTimeOut();
             isConnect = false;
 //            以下3行代码，放在AppBikeControlManager里面。
 //            if (isReConnection) {
@@ -679,6 +680,7 @@ public class BikeControlManager extends BikeController {
                         disconnect();
                     }
                     disconnected();
+                    appDisconnected();
                     endDriving();
                 }
             }
@@ -711,6 +713,7 @@ public class BikeControlManager extends BikeController {
 
     public void disconnect() {
         /**lastOBD = "0";//需要listener*/
+        appDisconnected();
         if (mBLEManager != null) {
             if (mOnBikeCallbacks != null) {
                 for (OnBikeCallback lisener : mOnBikeCallbacks) {
@@ -737,9 +740,25 @@ public class BikeControlManager extends BikeController {
         }
     }
 
+    public void addAppBikeCallBack(OnAppBikeCallback callback) {
+        if (mOnAppBikeCallbacks != null) {
+            mOnAppBikeCallbacks.add(callback);
+        }
+    }
+
+    public void removeAppBikeCallBack(OnAppBikeCallback callback) {
+        if (mOnAppBikeCallbacks != null) {
+            mOnAppBikeCallbacks.remove(callback);
+        }
+    }
+
+
 
     private boolean isNull() {
         if (mOnBikeCallbacks == null) {
+            return true;
+        }
+        if(mOnAppBikeCallbacks == null){
             return true;
         }
         return false;
@@ -789,6 +808,69 @@ public class BikeControlManager extends BikeController {
         for (OnBikeCallback lisener : mOnBikeCallbacks) {
             if (lisener != null) {
                 lisener.onLeScanEnd(isFound);
+            }
+        }
+    }
+
+    private void scanAppBLEEnd(boolean isFound) {
+        if (isNull()) return;
+        for (OnAppBikeCallback lisener : mOnAppBikeCallbacks) {
+            if (lisener != null) {
+                lisener.onAppLeScanEnd(isFound);
+            }
+        }
+    }
+
+    private void appDisconnected() {
+        if (isNull()) return;
+        for (OnAppBikeCallback lisener : mOnAppBikeCallbacks) {
+            if (lisener != null) {
+                lisener.onAppDisconnected();
+            }
+        }
+    }
+
+    private void appConnected() {
+        if (isNull()) return;
+        for (OnAppBikeCallback lisener : mOnAppBikeCallbacks) {
+            if (lisener != null) {
+                lisener.onAppConnected();
+            }
+        }
+    }
+
+    private void appConnectTimeOut() {
+        if (isNull()) return;
+        for (OnAppBikeCallback lisener : mOnAppBikeCallbacks) {
+            if (lisener != null) {
+                lisener.onAppConnectTimeOut();
+            }
+        }
+    }
+
+    private void appDataAvailable(BlueToothResponseInfo data) {
+        if (isNull()) return;
+        for (OnAppBikeCallback lisener : mOnAppBikeCallbacks) {
+            if (lisener != null) {
+                lisener.onAppDataAvailable(data);
+            }
+        }
+    }
+
+    private void appDisconnect() {
+        if (isNull()) return;
+        for (OnAppBikeCallback lisener : mOnAppBikeCallbacks) {
+            if (lisener != null) {
+                lisener.onAppDisconnect();
+            }
+        }
+    }
+
+    private void appEndDriving() {
+        if (isNull()) return;
+        for (OnAppBikeCallback lisener : mOnAppBikeCallbacks) {
+            if (lisener != null) {
+                lisener.onAppEndDriving();
             }
         }
     }

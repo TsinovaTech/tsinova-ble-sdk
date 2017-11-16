@@ -1,4 +1,4 @@
-package com.tsinova.bluetoothandroid.manage;
+package com.tsinova.bluetoothandroid.manager;
 
 public abstract class BikeController {
 

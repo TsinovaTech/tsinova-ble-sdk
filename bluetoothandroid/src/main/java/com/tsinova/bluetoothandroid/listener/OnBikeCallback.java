@@ -1,4 +1,4 @@
-package com.tsinova.bike.listener;
+package com.tsinova.bluetoothandroid.listener;
 
 import android.app.Dialog;
 
@@ -27,6 +27,8 @@ public interface OnBikeCallback {
 	void onConnectTimeOut();
 
 	void onDataAvailable(BlueToothResponseInfo data);
+
+
 
 
 	/**
