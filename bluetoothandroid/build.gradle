@@ -33,6 +33,7 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:23.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
@@ -40,11 +41,11 @@ dependencies {
     compile 'com.getkeepsafe.relinker:relinker:1.2.1'
 }
 
-publish{
+publish {
     userOrg = 'warry19940712'//bintray.com用户名
     groupId = 'com.tsinova'//jcenter上的路径
     artifactId = 'TsinovaBluetooth'//项目名称
-    publishVersion = '1.0.2'//版本号
+    publishVersion = '1.0.4'//版本号
     desc = 'A Bluetooth module to control E-Bike of Tsinova.'//描述，不重要
     website = 'https://github.com/TsinovaTech/TsinovaBluetooth'//网站，最好有，不重要
 }
