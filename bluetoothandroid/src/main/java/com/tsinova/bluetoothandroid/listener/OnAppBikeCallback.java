@@ -23,7 +23,7 @@ public interface OnAppBikeCallback {
      */
     void onAppConnectTimeOut();
 
-    void onAppDataAvailable(BlueToothResponseInfo data);
+    void onAppDataAvailable(BlueToothResponseInfo data,String json);
 
     void onAppDisconnect();
 
