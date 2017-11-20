@@ -856,7 +856,7 @@ public class BikeControlManager extends BikeController {
         }
     }
 
-    private void cancelReconnection() {
+    public void cancelReconnection() {
         if (isNull()) return;
         for (OnBikeCallback lisener : mOnBikeCallbacks) {
             if (lisener != null) {
@@ -865,7 +865,7 @@ public class BikeControlManager extends BikeController {
         }
     }
 
-    private void doClickReconnection() {
+    public void doClickReconnection() {
         if (isNull()) return;
         for (OnBikeCallback lisener : mOnBikeCallbacks) {
             if (lisener != null) {
@@ -874,7 +874,7 @@ public class BikeControlManager extends BikeController {
         }
     }
 
-    private void shouwReconnectionDialog(Dialog dialog) {
+    public void shouwReconnectionDialog(Dialog dialog) {
         if (isNull()) return;
         for (OnBikeCallback lisener : mOnBikeCallbacks) {
             lisener.onShouwReconnectionDialog(dialog);
