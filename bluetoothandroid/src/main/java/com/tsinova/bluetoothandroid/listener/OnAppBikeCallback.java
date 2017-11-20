@@ -31,12 +31,14 @@ public interface OnAppBikeCallback {
     /**
      * 第一次启动，或者退出再登录的时候调用
      */
-    public abstract void onAppBindServiceAndConnectBLE();
+    void onAppBindServiceAndConnectBLE();
+
+    void onAppBindServiceAndConnectBLEBikeFragment();
 
     /**
      * 开始骑行
      */
-    public abstract void onAppStartDriving();
+   void onAppStartDriving();
 
 
     /**

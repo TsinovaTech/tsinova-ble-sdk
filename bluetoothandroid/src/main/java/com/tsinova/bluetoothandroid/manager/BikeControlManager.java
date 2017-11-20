@@ -111,7 +111,7 @@ public class BikeControlManager extends BikeController {
             isAutoConnect = true;
 //            mBLEManager.searchAndConnect(mActivity, mOnGattNotifyLisener);
 //            mBLEManager.connect(mActivity,btAddress,mOnGattNotifyLisener);
-
+            appBindServiceAndConnectBLEBikeFragment();
         }
 
     }
@@ -878,6 +878,15 @@ public class BikeControlManager extends BikeController {
         for (OnAppBikeCallback lisener : mOnAppBikeCallbacks) {
             if (lisener != null) {
                 lisener.onAppBindServiceAndConnectBLE();
+            }
+        }
+    }
+
+    private void  appBindServiceAndConnectBLEBikeFragment() {
+        if (isNull()) return;
+        for (OnAppBikeCallback lisener : mOnAppBikeCallbacks) {
+            if (lisener != null) {
+                lisener. onAppBindServiceAndConnectBLEBikeFragment();
             }
         }
     }
