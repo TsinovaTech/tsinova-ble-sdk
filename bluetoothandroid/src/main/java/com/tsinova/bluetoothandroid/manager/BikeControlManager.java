@@ -1,6 +1,7 @@
 package com.tsinova.bluetoothandroid.manager;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
@@ -825,6 +826,58 @@ public class BikeControlManager extends BikeController {
             if (lisener != null) {
                 lisener.onAppLeScanEnd(isFound);
             }
+        }
+    }
+
+    public void checkBLEFinish(boolean needUpdate) {
+        if (isNull()) return;
+        for (OnBikeCallback lisener : mOnBikeCallbacks) {
+            if (lisener != null) {
+                lisener.onCheckFinish(needUpdate);
+            }
+        }
+    }
+
+    public void checkBLEError() {
+        if (isNull()) return;
+        for (OnBikeCallback lisener : mOnBikeCallbacks) {
+            if (lisener != null) {
+                lisener.onCheckError();
+            }
+        }
+    }
+
+    public void updateBLEFinish(boolean isSuccess) {
+        if (isNull()) return;
+        for (OnBikeCallback lisener : mOnBikeCallbacks) {
+            if (lisener != null) {
+                lisener.onUpdateFinish(isSuccess);
+            }
+        }
+    }
+
+    private void cancelReconnection() {
+        if (isNull()) return;
+        for (OnBikeCallback lisener : mOnBikeCallbacks) {
+            if (lisener != null) {
+                lisener.onCancelReconnection();
+            }
+        }
+    }
+
+    private void doClickReconnection() {
+        if (isNull()) return;
+        for (OnBikeCallback lisener : mOnBikeCallbacks) {
+            if (lisener != null) {
+                lisener.onDoClickReconnection();
+            }
+        }
+    }
+
+    private void shouwReconnectionDialog(Dialog dialog) {
+        if (isNull()) return;
+        for (OnBikeCallback lisener : mOnBikeCallbacks) {
+            lisener.onShouwReconnectionDialog(dialog);
         }
     }
 
