@@ -13,7 +13,7 @@ public enum SingletonBTInfo {
     INSTANCE;
     private String bikeBluetoothNumber;
     private String bikeBluetoothaddress;
-    private String packgeName;
+    private String packageName;
     private Context applicationContext;
     private boolean isEncryption = true;
 
@@ -42,13 +42,13 @@ public enum SingletonBTInfo {
         this.bikeBluetoothaddress = bikeBluetoothaddress;
     }
 
-    public String getPackgeName() {
-        CommonUtils.log(packgeName);
-        return packgeName;
+    public String getPackageName() {
+        CommonUtils.log(packageName);
+        return packageName;
     }
 
-    public void setPackgeNam(String packgeName) {
-        this.packgeName = packgeName;
+    public void setPackageName(String packgaeName) {
+        this.packageName = packageName;
     }
 
     public Context getApplicationContext() {
