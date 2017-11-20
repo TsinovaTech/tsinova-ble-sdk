@@ -372,7 +372,7 @@ public class BikeControlManager extends BikeController {
             }
 
             dataAvailable(mResponseInfo);
-            appDataAvailable(mResponseInfo);
+            appDataAvailable(mResponseInfo,json);
 
 //            以下固件升级请求模块代码放在AppBikeControlManager里面。
 //            if (!mIsCheckedUpdate) { // 请求固件升级
@@ -848,11 +848,11 @@ public class BikeControlManager extends BikeController {
         }
     }
 
-    private void appDataAvailable(BlueToothResponseInfo data) {
+    private void appDataAvailable(BlueToothResponseInfo data,String json) {
         if (isNull()) return;
         for (OnAppBikeCallback lisener : mOnAppBikeCallbacks) {
             if (lisener != null) {
-                lisener.onAppDataAvailable(data);
+                lisener.onAppDataAvailable(data,json);
             }
         }
     }
