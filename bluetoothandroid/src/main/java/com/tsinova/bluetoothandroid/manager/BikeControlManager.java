@@ -95,6 +95,7 @@ public class BikeControlManager extends BikeController {
         if (!TextUtils.isEmpty(btName) && mBLEManager != null && !mBLEManager.isConnect()) {
             isAutoConnect = true;
             mBLEManager.searchAndConnect(mActivity, mOnGattNotifyLisener);
+            appBindServiceAndConnectBLE();
         }
     }
 
@@ -138,6 +139,7 @@ public class BikeControlManager extends BikeController {
         mInitUI = false;
         mIsNotify = false;
         checkTheConnect();
+        appStartDriving();
     }
 
     @Override
@@ -223,6 +225,7 @@ public class BikeControlManager extends BikeController {
 //            mRequstInfo.setSt(mStartDriving ? "1" : "0");
             CommonUtils.log("openLight -----> " + mRequstInfo.toString());
             writeDataToBike(mRequstInfo, false);
+            appOpenLight(open);
         }
     }
 
@@ -242,6 +245,7 @@ public class BikeControlManager extends BikeController {
             mRequstInfo.setSt("1");
             mRequstInfo.setMd(String.valueOf(md));
             mBLEManager.setMDToBike(mRequstInfo, md);
+            appSetMDToBike(md);
         }
     }
 
@@ -253,10 +257,12 @@ public class BikeControlManager extends BikeController {
         mRequstInfo.setSt("1");
         mRequstInfo.setGe(shift + "");
         writeDataToBike(mRequstInfo);
+        appShiftedGears(shift);
     }
 
     @Override
     public boolean isConnect() {
+        appIsConnect();
         return isConnect;
     }
 
@@ -284,6 +290,7 @@ public class BikeControlManager extends BikeController {
         instance = null;
         mStartDriving = false;
         isReConnection = false;
+        appRelease();
     }
 
     public boolean isOpenLight() {
@@ -866,6 +873,22 @@ public class BikeControlManager extends BikeController {
         }
     }
 
+    private void appBindServiceAndConnectBLE() {
+        if (isNull()) return;
+        for (OnAppBikeCallback lisener : mOnAppBikeCallbacks) {
+            if (lisener != null) {
+                lisener.onAppBindServiceAndConnectBLE();
+            }
+        }
+    }
+    private void appStartDriving() {
+        if (isNull()) return;
+        for (OnAppBikeCallback lisener : mOnAppBikeCallbacks) {
+            if (lisener != null) {
+                lisener.onAppStartDriving();
+            }
+        }
+    }
     private void appEndDriving() {
         if (isNull()) return;
         for (OnAppBikeCallback lisener : mOnAppBikeCallbacks) {
@@ -874,4 +897,46 @@ public class BikeControlManager extends BikeController {
             }
         }
     }
+
+    private void appOpenLight(boolean open) {
+        if (isNull()) return;
+        for (OnAppBikeCallback lisener : mOnAppBikeCallbacks) {
+            if (lisener != null) {
+                lisener.onAppOpenLight(open);
+            }
+        }
+    }
+    private void appSetMDToBike(int md) {
+        if (isNull()) return;
+        for (OnAppBikeCallback lisener : mOnAppBikeCallbacks) {
+            if (lisener != null) {
+                lisener.onAppSetMDToBike(md);
+            }
+        }
+    }
+    private void appShiftedGears(int shift){
+        if (isNull()) return;
+        for (OnAppBikeCallback lisener : mOnAppBikeCallbacks) {
+            if (lisener != null) {
+                lisener.onAppShiftedGears(shift);
+            }
+        }
+    }
+    private void appIsConnect() {
+        if (isNull()) return;
+        for (OnAppBikeCallback lisener : mOnAppBikeCallbacks) {
+            if (lisener != null) {
+                lisener.onAppIsConnect();
+            }
+        }
+    }
+    private void appRelease() {
+        if (isNull()) return;
+        for (OnAppBikeCallback lisener : mOnAppBikeCallbacks) {
+            if (lisener != null) {
+                lisener.onAppRelease();
+            }
+        }
+    }
+
 }
