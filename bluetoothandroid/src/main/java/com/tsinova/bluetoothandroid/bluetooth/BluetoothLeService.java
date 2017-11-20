@@ -64,16 +64,16 @@ public class BluetoothLeService extends Service {
     private static final int STATE_CONNECTED = 2;
 
     public final static String ACTION_GATT_CONNECTED =
-            SingletonBTInfo.INSTANCE.getPageName() + ".le.ACTION_GATT_CONNECTED";
+            SingletonBTInfo.INSTANCE.getPackgeName() + ".le.ACTION_GATT_CONNECTED";
     public final static String ACTION_GATT_DISCONNECTED =
-            SingletonBTInfo.INSTANCE.getPageName() + ".le.ACTION_GATT_DISCONNECTED";
+            SingletonBTInfo.INSTANCE.getPackgeName() + ".le.ACTION_GATT_DISCONNECTED";
     public final static String ACTION_GATT_SERVICES_DISCOVERED =
-            SingletonBTInfo.INSTANCE.getPageName() + ".le.ACTION_GATT_SERVICES_DISCOVERED";
+            SingletonBTInfo.INSTANCE.getPackgeName() + ".le.ACTION_GATT_SERVICES_DISCOVERED";
     public final static String ACTION_DATA_AVAILABLE =
-            SingletonBTInfo.INSTANCE.getPageName() + ".le.ACTION_DATA_AVAILABLE";
+            SingletonBTInfo.INSTANCE.getPackgeName() + ".le.ACTION_DATA_AVAILABLE";
     public final static String ACTION_DATA_WRITE_CALLBAK =
-            SingletonBTInfo.INSTANCE.getPageName() + ".le.ACTION_DATA_WRITE_CALLBAK";
-    public final static String EXTRA_DATA = SingletonBTInfo.INSTANCE.getPageName() + ".le.EXTRA_DATA";
+            SingletonBTInfo.INSTANCE.getPackgeName() + ".le.ACTION_DATA_WRITE_CALLBAK";
+    public final static String EXTRA_DATA = SingletonBTInfo.INSTANCE.getPackgeName() + ".le.EXTRA_DATA";
     public final static String UPDATE_FIRMWARE = ".le.UPDATE_FIRMWARE";
 
     // Implements callback methods for GATT events that the app cares about.  For example,
