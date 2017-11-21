@@ -13,4 +13,6 @@ public class Constant {
 
     public static final int ACTIVITY_REQUEST_CONN_BIKE = 4008;
 
+    public static final int ACTIVITY_RESULT_CONN_BIKE = 8001;
+
 }

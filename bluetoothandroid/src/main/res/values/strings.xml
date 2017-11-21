@@ -7,4 +7,9 @@
     <string name="sdk_bltmanager_search_bl_dialog_content">Please click Confirm to enter the search page</string>
     <string name="sdk_bltmanager_search_bl_dialog_cancel">Cancel</string>
     <string name="sdk_bltmanager_search_bl_dialog_ok">Confirm</string>
+
+
+    <string name="btlist_toast_tip_bt_num_wrong">请连接与车架号对应的蓝牙号</string>
+
+
 </resources>

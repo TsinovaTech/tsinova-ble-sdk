@@ -15,6 +15,25 @@ public enum SingletonBTInfo {
     private String bikeBluetoothaddress;
     private String packageName;
     private Context applicationContext;
+    private String bikeImageUrl;
+    private String bikeBrandImage;
+
+    public String getBikeImageUrl() {
+        return bikeImageUrl;
+    }
+
+    public void setBikeImageUrl(String bikeImageUrl) {
+        this.bikeImageUrl = bikeImageUrl;
+    }
+
+    public String getBikeBrandImage() {
+        return bikeBrandImage;
+    }
+
+    public void setBikeBrandImage(String bikeBrandImage) {
+        this.bikeBrandImage = bikeBrandImage;
+    }
+
     private boolean isEncryption = true;
 
     public boolean isEncryption() {

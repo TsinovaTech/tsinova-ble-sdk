@@ -3,4 +3,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="black">#FF000000</color>
     <color name="sdk_control_btn_finish">#1e1f20</color>
+    <color name="sdk_transparent_background">#00000000</color>
 </resources>
