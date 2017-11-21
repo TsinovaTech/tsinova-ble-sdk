@@ -131,6 +131,8 @@ public class BikeBlueToothManager {
                     mOnGattNotifyLisener.onConnected();
                     mScanning = false;
                     if (mOnBTListener != null) {
+
+                        
 //						eventBus.post(new ConnedEvent());
                         mOnBTListener.connectSuccess();
                     }
