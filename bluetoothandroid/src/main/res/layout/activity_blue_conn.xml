@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:RippleWaveView="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="#e0000000"
+    android:gravity="center"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="80dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="18dp"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/shape_conn">
+
+
+        <RelativeLayout
+            android:id="@+id/rl_serach"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="20dp"
+            android:visibility="gone">
+
+
+            <LinearLayout
+                android:id="@+id/ll_serach_bluetooth"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:gravity="center">
+
+
+                <com.tsinova.bike.view.RippleSpreadView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    RippleWaveView:rsv_innerAnimDuration="3000"
+                    RippleWaveView:rsv_innerCircleColor="#ffd248"
+                    RippleWaveView:rsv_innerSize="120dp"
+                    RippleWaveView:rsv_outAnimDuration="3000"
+                    RippleWaveView:rsv_outSize="260dp" />
+
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="20dp"
+                android:text="请将手机靠近电单车并确保电单车电源已打开"
+                android:textColor="#fefefe"
+                android:textSize="14sp" />
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_bluetooth" />
+
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/rl_serach_fail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="20dp"
+            android:visibility="gone">
+
+
+            <TextView
+                android:id="@+id/tv_12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_11"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp"
+                android:text="未搜索到与此车辆编号对应的电单车"
+                android:textColor="#ffffff" />
+
+
+            <TextView
+                android:id="@+id/btn_1"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_below="@+id/tv_12"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/btn_round_bg_whit"
+                android:gravity="center"
+                android:text="重试"
+                android:textColor="@color/sdk_control_btn_finish"
+                android:textSize="16sp"
+                android:textStyle="normal" />
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="20dp"
+                android:gravity="bottom"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:text="若多次搜索不到设备或无法连接电单车，请联系我们"
+                    android:textColor="#ffffff"
+                    android:textSize="12sp" />
+
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="客服电话："
+                        android:textColor="#ffffff"
+                        android:textSize="12sp" />
+
+
+                    <TextView
+                        android:id="@+id/tv_tel1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="400-819-0660"
+                        android:textColor="#187dfa"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="服务时间：周一至周日9:30-18:30(法定节假日除外)"
+                    android:textColor="#ffffff"
+                    android:textSize="12sp" />
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="120dp"
+                android:text="搜索失败"
+                android:textColor="#ffffff"
+                android:textSize="21sp" />
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:id="@+id/rl_conn_fail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="20dp">
+
+
+            <TextView
+                android:id="@+id/tv_22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_21"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp"
+                android:text="请重启电单车或稍后重试"
+                android:textColor="#ffffff" />
+
+
+            <TextView
+                android:id="@+id/btn_2"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_below="@+id/tv_22"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/btn_round_bg_whit"
+                android:gravity="center"
+                android:text="重新连接"
+                android:textColor="@color/sdk_control_btn_finish"
+                android:textSize="16sp"
+                android:textStyle="normal" />
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="20dp"
+                android:gravity="bottom"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_23"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:text="若多次搜索不到设备或无法连接电单车，请联系我们"
+                    android:textColor="#ffffff"
+                    android:textSize="12sp" />
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_24"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="客服电话："
+                        android:textColor="#ffffff"
+                        android:textSize="12sp" />
+
+
+                    <TextView
+                        android:id="@+id/tv_tel2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="400-819-0660"
+                        android:textColor="#187dfa"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/tv_25"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="服务时间：周一至周日9:30-18:30(法定节假日除外)"
+                    android:textColor="#ffffff"
+                    android:textSize="12sp" />
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="120dp"
+                android:text="通讯失败"
+                android:textColor="#ffffff"
+                android:textSize="21sp" />
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/rl_conn_bike"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="20dp"
+            >
+
+            <ImageView
+                android:id="@+id/iv_logo"
+                android:layout_width="160dp"
+                android:layout_height="40dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="40dp"/>
+
+
+            <ImageView
+                android:id="@+id/iv_bike"
+                android:layout_width="270dp"
+                android:layout_height="173dp"
+                android:layout_centerInParent="true"/>
+
+            <ImageView
+                android:id="@+id/iv_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="48dp"
+                android:background="@drawable/ic_progress" />
+
+            <ImageView
+                android:id="@+id/iv_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="48dp"
+                android:background="@drawable/ic_nike"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="18dp"
+                android:text="正在连接..."
+                android:textColor="#ffffff"
+                android:textSize="14sp" />
+
+
+            <TextView
+                android:id="@+id/tv_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="18dp"
+                android:text="连接成功"
+                android:textColor="#ffffff"
+                android:textSize="14sp"
+                android:visibility="gone" />
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:background="@drawable/ic_close" />
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

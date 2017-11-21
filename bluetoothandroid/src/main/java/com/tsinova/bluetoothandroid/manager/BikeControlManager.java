@@ -721,7 +721,6 @@ public class BikeControlManager extends BikeController {
 
     public void disconnect() {
         /**lastOBD = "0";//需要listener*/
-        appDisconnected();
         if (mBLEManager != null) {
             if (mOnBikeCallbacks != null) {
                 for (OnBikeCallback lisener : mOnBikeCallbacks) {
@@ -733,6 +732,7 @@ public class BikeControlManager extends BikeController {
 //            OBDManager.getObdInfo().setFirst(true);
             mBLEManager.disconnect();
             isConnect = false;
+            appDisconnected();
         }
     }
 

@@ -39,6 +39,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     compile 'com.google.code.gson:gson:2.8.2'
     compile 'com.getkeepsafe.relinker:relinker:1.2.1'
+    compile 'com.jakewharton:butterknife:8.8.1'
 }
 
 publish {
