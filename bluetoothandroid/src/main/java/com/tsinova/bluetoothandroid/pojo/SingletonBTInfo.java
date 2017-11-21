@@ -45,7 +45,6 @@ public enum SingletonBTInfo {
     }
 
     public String getBikeBluetoothNumber() {
-        CommonUtils.log(bikeBluetoothNumber);
         return bikeBluetoothNumber;
     }
 
@@ -62,7 +61,6 @@ public enum SingletonBTInfo {
     }
 
     public String getPackageName() {
-        CommonUtils.log(packageName);
         return packageName;
     }
 
@@ -71,7 +69,6 @@ public enum SingletonBTInfo {
     }
 
     public Context getApplicationContext() {
-        CommonUtils.log(applicationContext.toString());
         return applicationContext;
     }
 
