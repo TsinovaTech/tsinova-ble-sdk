@@ -1,5 +1,7 @@
 package com.tsinova.bluetoothandroid.pojo;
 
+import android.text.TextUtils;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -7,61 +9,72 @@ public class BlueToothResponseInfo implements Serializable {
 
 	private static final long serialVersionUID = -667800553317484066L;
 
-	private List<BikeBlueToothInfo> da; //为app所需功能的数据。
-	
-	private String su; //此值为1,说明此次发送的数据是无无异常的。
-	
-//	private String me; //当“su”为0时,说明数据异常,此值为异常值(例如错误代码等)。
+	private int be; // 电池电量
 
-	private String md;// 骑行模式
-	
-	private String ve;// 固件版本
-	
-	
-	
-	public String getMd() {
-		return md;
+	private String sp; //当前速度
+
+	private String lt; // 此值为1,代表前灯打开,此值为0,代表前灯关闭。
+
+	private int po; // 当前功率
+
+	public int getPo() {
+		return po;
 	}
 
-	public void setMd(String md) {
-		this.md = md;
+	public void setPo(int po) {
+		this.po = po;
 	}
 
-	public String getVe() {
-		return ve;
+	public int getBe() {
+		return be;
 	}
 
-	public void setVe(String ve) {
-		this.ve = ve;
+	public void setBe(int be) {
+		this.be = be;
 	}
 
-	public List<BikeBlueToothInfo> getDa() {
-		return da;
+	public int getIntSp(){
+		int speed = 0;
+		try{
+			if(!TextUtils.isEmpty(sp)){
+				speed = Integer.valueOf(sp);
+			}
+		} catch (NullPointerException e){
+			e.printStackTrace();
+		}
+		return speed;
 	}
 
-	public void setDa(List<BikeBlueToothInfo> da) {
-		this.da = da;
+	/**
+	 * 速度做除10处理
+	 */
+	public double getDoubleSp() {
+		double speed = 0.0d;
+		try{
+			if(!TextUtils.isEmpty(sp)){
+				speed = Double.valueOf(sp);
+			}
+		}catch (NumberFormatException e){
+			e.printStackTrace();
+		}
+		return speed / 10d;
 	}
 
-	public String getSu() {
-		return su==null?"0000000000":su;
+	public void setSp(String sp) {
+		this.sp = sp;
 	}
 
-	public void setSu(String su) {
-		this.su = su;
+	public String getLt() {
+		return lt;
 	}
 
-//	public String getMe() {
-//		return me;
-//	}
-//
-//	public void setMe(String me) {
-//		this.me = me;
-//	}
+	public void setLt(String lt) {
+		this.lt = lt;
+	}
 
 	@Override
 	public String toString() {
-		return "BlueToothResponseInfo [da=" + da + ", su=" + su + ", md=" + md + ", ve=" + ve + "]";
+		return "[be=" + be + ", sp=" + sp + ", lt=" + lt + ", po=" + po + "]";
 	}
 
 	

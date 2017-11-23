@@ -13,10 +13,6 @@ public class BikeBlueToothInfo implements Serializable {
 	private String sp; //当前速度
 	
 	private String lt; // 此值为1,代表前灯打开,此值为0,代表前灯关闭。
-	
-	private String st; // 此值为1,代表车辆正在行行驶,此值为0,代表车辆停止止运行。
-	
-	private int ge; // 当前挡位。此值为 1,代表高档,此值为 0,代表低档。
 
 	private int po; // 当前功率
 
@@ -75,26 +71,9 @@ public class BikeBlueToothInfo implements Serializable {
 		this.lt = lt;
 	}
 
-	public String getSt() {
-		return st;
-	}
-
-	public void setSt(String st) {
-		this.st = st;
-	}
-
-	public int getGe() {
-		return ge;
-	}
-
-	public void setGe(int ge) {
-		this.ge = ge;
-	}
-
 	@Override
 	public String toString() {
-		return "[be=" + be + ", sp=" + sp + ", lt=" + lt
-				+ ", st=" + st + ", ge=" + ge + "]";
+		return "[be=" + be + ", sp=" + sp + ", lt=" + lt + ", po=" + po + "]";
 	}
 	
 	
