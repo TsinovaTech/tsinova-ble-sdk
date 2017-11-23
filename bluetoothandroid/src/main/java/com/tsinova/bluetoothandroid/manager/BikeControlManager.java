@@ -8,6 +8,8 @@ import android.text.TextUtils;
 
 
 import com.tsinova.bluetoothandroid.bluetooth.BikeBlueToothManager;
+import com.tsinova.bluetoothandroid.bluetoothview.ConnBikeActivity;
+import com.tsinova.bluetoothandroid.common.Constant;
 import com.tsinova.bluetoothandroid.listener.CallBack1;
 import com.tsinova.bluetoothandroid.listener.OnAppBikeCallback;
 import com.tsinova.bluetoothandroid.listener.OnBikeCallback;
@@ -30,7 +32,7 @@ public class BikeControlManager extends BikeController {
     private BlueToothRequstInfo mRequstInfo; // 发送蓝牙信息
     private BlueToothResponseInfo mResponseInfo; // 接受蓝牙信息
     private BikeBlueToothManager mBLEManager;
-//    private SharePreferencesManager mPreferencesManager;
+    //    private SharePreferencesManager mPreferencesManager;
     /*---这些状态可以封装起来-----*/
     private boolean mInitUI; // 开始骑行后是否首次初始化了UI
     private boolean mIsNotify = false; // 是否收到了蓝牙模块的通知
@@ -147,18 +149,18 @@ public class BikeControlManager extends BikeController {
     public void endDriving() {
 
         appEndDriving();
-     /**   try {//需要listener
-            ControlFragment.setTipGONE();
-        }catch (Exception e){
+        /**   try {//需要listener
+         ControlFragment.setTipGONE();
+         }catch (Exception e){
 
-        }
+         }
 
-        try {
-            ControlLandFragment.setTipGONE();
-        }catch (Exception e){
+         try {
+         ControlLandFragment.setTipGONE();
+         }catch (Exception e){
 
-        }
-      */
+         }
+         */
 
 
         CommonUtils.log("BIkeControlManager ----> endDriving()");
@@ -240,8 +242,8 @@ public class BikeControlManager extends BikeController {
             mRequstInfo.setSt("1");
             mRequstInfo.setLt(String.valueOf(mResponseInfo.getDa().get(0).getLt()));
             mRequstInfo.setGe(String.valueOf(mResponseInfo.getDa().get(0).getGe()));
-            CommonUtils.log("实时档位----------->"+mResponseInfo.getDa().get(0).getGe());
-            CommonUtils.log("转换后实时档位----------->"+String.valueOf(mResponseInfo.getDa().get(0).getGe()));
+            CommonUtils.log("实时档位----------->" + mResponseInfo.getDa().get(0).getGe());
+            CommonUtils.log("转换后实时档位----------->" + String.valueOf(mResponseInfo.getDa().get(0).getGe()));
 //            }
             mRequstInfo.setSt("1");
             mRequstInfo.setMd(String.valueOf(md));
@@ -275,7 +277,6 @@ public class BikeControlManager extends BikeController {
 //    public boolean isOBDFirstShow(){
 //        return OBDManager.instance.isOBDFirstShow();
 //    }
-
 
 
     @Override
@@ -380,7 +381,7 @@ public class BikeControlManager extends BikeController {
             }
 
             dataAvailable(mResponseInfo);
-            appDataAvailable(mResponseInfo,json);
+            appDataAvailable(mResponseInfo, json);
 
 //            以下固件升级请求模块代码放在AppBikeControlManager里面。
 //            if (!mIsCheckedUpdate) { // 请求固件升级
@@ -715,7 +716,7 @@ public class BikeControlManager extends BikeController {
 
     public void creatSearchDialog(final Activity activity) {
         if (mBLEManager != null) {
-           /** mBLEManager.creatSearchDialog(activity, ConnBikeActivity.class, Constant.ACTIVITY_REQUEST_CONN_BIKE);*/
+            mBLEManager.creatSearchDialog(activity, ConnBikeActivity.class, Constant.ACTIVITY_REQUEST_CONN_BIKE);
         }
     }
 
@@ -761,12 +762,11 @@ public class BikeControlManager extends BikeController {
     }
 
 
-
     private boolean isNull() {
         if (mOnBikeCallbacks == null) {
             return true;
         }
-        if(mOnAppBikeCallbacks == null){
+        if (mOnAppBikeCallbacks == null) {
             return true;
         }
         return false;
@@ -781,6 +781,7 @@ public class BikeControlManager extends BikeController {
             }
         }
     }
+
     private void connected() {
         if (isNull()) return;
         try {
@@ -908,11 +909,11 @@ public class BikeControlManager extends BikeController {
         }
     }
 
-    private void appDataAvailable(BlueToothResponseInfo data,String json) {
+    private void appDataAvailable(BlueToothResponseInfo data, String json) {
         if (isNull()) return;
         for (OnAppBikeCallback lisener : mOnAppBikeCallbacks) {
             if (lisener != null) {
-                lisener.onAppDataAvailable(data,json);
+                lisener.onAppDataAvailable(data, json);
             }
         }
     }
@@ -935,14 +936,15 @@ public class BikeControlManager extends BikeController {
         }
     }
 
-    private void  appBindServiceAndConnectBLEBikeFragment() {
+    private void appBindServiceAndConnectBLEBikeFragment() {
         if (isNull()) return;
         for (OnAppBikeCallback lisener : mOnAppBikeCallbacks) {
             if (lisener != null) {
-                lisener. onAppBindServiceAndConnectBLEBikeFragment();
+                lisener.onAppBindServiceAndConnectBLEBikeFragment();
             }
         }
     }
+
     private void appStartDriving() {
         if (isNull()) return;
         for (OnAppBikeCallback lisener : mOnAppBikeCallbacks) {
@@ -951,6 +953,7 @@ public class BikeControlManager extends BikeController {
             }
         }
     }
+
     private void appEndDriving() {
         if (isNull()) return;
         for (OnAppBikeCallback lisener : mOnAppBikeCallbacks) {
@@ -968,6 +971,7 @@ public class BikeControlManager extends BikeController {
             }
         }
     }
+
     private void appSetMDToBike(int md) {
         if (isNull()) return;
         for (OnAppBikeCallback lisener : mOnAppBikeCallbacks) {
@@ -976,7 +980,8 @@ public class BikeControlManager extends BikeController {
             }
         }
     }
-    private void appShiftedGears(int shift){
+
+    private void appShiftedGears(int shift) {
         if (isNull()) return;
         for (OnAppBikeCallback lisener : mOnAppBikeCallbacks) {
             if (lisener != null) {
@@ -984,6 +989,7 @@ public class BikeControlManager extends BikeController {
             }
         }
     }
+
     private void appIsConnect() {
         if (isNull()) return;
         for (OnAppBikeCallback lisener : mOnAppBikeCallbacks) {
@@ -992,6 +998,7 @@ public class BikeControlManager extends BikeController {
             }
         }
     }
+
     private void appRelease() {
         if (isNull()) return;
         for (OnAppBikeCallback lisener : mOnAppBikeCallbacks) {
