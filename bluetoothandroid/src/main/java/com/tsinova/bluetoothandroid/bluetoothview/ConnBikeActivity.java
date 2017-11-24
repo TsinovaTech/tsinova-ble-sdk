@@ -282,7 +282,7 @@ public class ConnBikeActivity extends FragmentActivity implements OnBikeBTListen
                 return;
             }
 
-            connectFailure();
+//            connectFailure();
 
 
             showRefresh(false);

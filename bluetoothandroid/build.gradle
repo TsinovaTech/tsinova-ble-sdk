@@ -40,6 +40,7 @@ dependencies {
     compile 'com.google.code.gson:gson:2.8.2'
     compile 'com.getkeepsafe.relinker:relinker:1.2.1'
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+    compile 'com.squareup.okhttp3:okhttp:3.9.1'
 }
 
 publish {
