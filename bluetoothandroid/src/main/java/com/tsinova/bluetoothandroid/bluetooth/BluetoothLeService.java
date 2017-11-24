@@ -220,7 +220,7 @@ public class BluetoothLeService extends Service {
 
                         String sValue = new String(value);
                         CommonUtils.log(TAG, "broadcastUpdate ----> sValue : " + sValue + " / data.length : " + data.length);
-                        if (sValue.startsWith("{\"da\"")) {
+                        if (sValue.startsWith("{\"be\"")) {
                             charChangeNum = 0;
                             byteBuffer = null;
                             stringBuffer = null;
