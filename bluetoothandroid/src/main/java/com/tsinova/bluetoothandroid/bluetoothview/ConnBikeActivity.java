@@ -24,7 +24,7 @@ import com.tsinova.bluetoothandroid.bluetooth.BikeBlueToothManager;
 import com.tsinova.bluetoothandroid.bluetooth.BikeLeScanCallback;
 import com.tsinova.bluetoothandroid.bluetooth.OnBikeBTListener;
 import com.tsinova.bluetoothandroid.common.Constant;
-import com.tsinova.bluetoothandroid.manager.BikeControlManager;
+import com.tsinova.bluetoothandroid.manager.SDKBikeControlManager;
 import com.tsinova.bluetoothandroid.pojo.SingletonBTInfo;
 import com.tsinova.bluetoothandroid.util.CommonUtils;
 import com.tsinova.bluetoothandroid.util.UIUtils;
@@ -77,7 +77,7 @@ public class ConnBikeActivity extends FragmentActivity implements OnBikeBTListen
     private boolean isConned;
 
     private BikeBlueToothManager mManager;
-    private static BikeControlManager mBikeControlManager;
+    private static SDKBikeControlManager mSDKBikeControlManager;
 
 
     @Override
@@ -131,7 +131,7 @@ public class ConnBikeActivity extends FragmentActivity implements OnBikeBTListen
         Log.d("event", "蓝牙搜索中。。。");
 
 
-        mBikeControlManager = BikeControlManager.getBikeControlManager(this);
+        mSDKBikeControlManager = SDKBikeControlManager.getBikeControlManager(this);
 
 
         Intent intent = getIntent();
@@ -310,8 +310,8 @@ public class ConnBikeActivity extends FragmentActivity implements OnBikeBTListen
 
 
             CommonUtils.log("ConnBikeActivity -----> ble address : " + address + " / name : " + name);
-            if (mBikeControlManager != null && !TextUtils.isEmpty(address)) {
-                mBikeControlManager.connect(address);
+            if (mSDKBikeControlManager != null && !TextUtils.isEmpty(address)) {
+                mSDKBikeControlManager.connect(address);
             }
 
             setHideAnimation(llSerachBluetooth, 1500);

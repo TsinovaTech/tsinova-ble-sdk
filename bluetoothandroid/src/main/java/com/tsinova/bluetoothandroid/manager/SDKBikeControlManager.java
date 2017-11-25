@@ -22,9 +22,9 @@ import com.tsinova.bluetoothandroid.util.CommonUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BikeControlManager extends BikeController {
+public class SDKBikeControlManager extends BikeController {
 
-    private static final String TAG = BikeControlManager.class.getSimpleName();
+    private static final String TAG = SDKBikeControlManager.class.getSimpleName();
     private List<OnBikeCallback> mOnBikeCallbacks = new ArrayList<OnBikeCallback>();
     private List<OnAppBikeCallback> mOnAppBikeCallbacks = new ArrayList<OnAppBikeCallback>();
     private static final int NOTIFY_TIMEOUT = 20 * 1000; // 蓝牙通信超时时间
@@ -34,7 +34,6 @@ public class BikeControlManager extends BikeController {
     private BikeBlueToothManager mBLEManager;
     //    private SharePreferencesManager mPreferencesManager;
     /*---这些状态可以封装起来-----*/
-    private boolean mInitUI; // 开始骑行后是否首次初始化了UI
     private boolean mIsNotify = false; // 是否收到了蓝牙模块的通知
     private boolean mIsCheckedUpdate = false; // 是否请求完成固件升级
     /*---这些状态可以封装起来----*/
@@ -42,29 +41,24 @@ public class BikeControlManager extends BikeController {
     private boolean isAutoConnect = false;// 是否为自动连接
     private boolean isConnect = false; // 是否已经连接
     private boolean isReConnection = false; // 是否是重新连接
-//    private String lastOBD = "0";
 
 
-    static BikeControlManager instance;
+    static SDKBikeControlManager instance;
 
-    FragmentActivity bikeActivity;
 
-    public static synchronized BikeControlManager getInstance(FragmentActivity activity) {
+    public static synchronized SDKBikeControlManager getInstance(FragmentActivity activity) {
         if (instance == null) {
-            instance = new BikeControlManager(activity);
+            instance = new SDKBikeControlManager(activity);
         }
         return instance;
     }
 
 
-    public static synchronized BikeControlManager getInstance() {
+    public static synchronized SDKBikeControlManager getInstance() {
         return instance;
     }
 
 
-    public void setBikeActivity(FragmentActivity activity) {
-        this.bikeActivity = activity;
-    }
 
 
     /**
@@ -73,16 +67,15 @@ public class BikeControlManager extends BikeController {
      * @param activity
      * @return
      */
-    public static synchronized BikeControlManager getBikeControlManager(FragmentActivity activity) {
+    public static synchronized SDKBikeControlManager getBikeControlManager(FragmentActivity activity) {
         return instance;
     }
 
 
-    private BikeControlManager(FragmentActivity activity) {
+    private SDKBikeControlManager(FragmentActivity activity) {
         this.mActivity = activity;
         mBLEManager = BikeBlueToothManager.getInstant(mActivity);
         mBLEManager.bindService(mActivity);
-
         init();
     }
 
@@ -139,7 +132,6 @@ public class BikeControlManager extends BikeController {
             mBLEManager.connect(mActivity, SingletonBTInfo.INSTANCE.getBikeBluetoothaddress(), mOnGattNotifyLisener);
         }
         mStartDriving = true;
-        mInitUI = false;
         mIsNotify = false;
         checkTheConnect();
         appStartDriving();
@@ -181,7 +173,6 @@ public class BikeControlManager extends BikeController {
 //        }
         mRequstInfo = null;
         mStartDriving = false;
-        mInitUI = true;
         mIsNotify = false;
         mIsCheckedUpdate = true;
     }
