@@ -22,7 +22,15 @@ public enum SingletonBTInfo {
     private String bikeImageUrl;
     private String bikeBrandImage;
     private String bikeNo;
+    private String cookies;
 
+    public String getCookies() {
+        return cookies;
+    }
+
+    public void setCookies(String cookies) {
+        this.cookies = cookies;
+    }
 
     public String getBikeNo() {
         return bikeNo;
@@ -32,15 +40,8 @@ public enum SingletonBTInfo {
         this.bikeNo = bikeNo;
     }
 
-    private List<Cookie> cookies;
 
-    public List<Cookie> getCookies() {
-        return cookies;
-    }
 
-    public void setCookies(List<Cookie> cookies) {
-        this.cookies = cookies;
-    }
 
     public String getBikeImageUrl() {
         return bikeImageUrl;

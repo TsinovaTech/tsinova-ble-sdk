@@ -26,16 +26,7 @@ public class HttpRequest {
     private OkHttpClient client;
 
     public HttpRequest() {
-        client = new OkHttpClient.Builder().cookieJar(new CookieJar() {
-            @Override
-            public void saveFromResponse(HttpUrl url, List<Cookie> cookies) {
-            }
-
-            @Override
-            public List<Cookie> loadForRequest(HttpUrl url) {
-                return SingletonBTInfo.INSTANCE.getCookies();
-            }
-        }).build();
+        client = new OkHttpClient.Builder().addInterceptor(new CookieInterceptor()).build();
     }
 
 
@@ -53,5 +44,7 @@ public class HttpRequest {
 
         }
     }
+
+
 
 }
