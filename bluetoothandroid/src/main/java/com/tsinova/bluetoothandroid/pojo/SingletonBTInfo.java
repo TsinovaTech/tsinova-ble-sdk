@@ -4,6 +4,10 @@ import android.content.Context;
 
 import com.tsinova.bluetoothandroid.util.CommonUtils;
 
+import java.util.List;
+
+import okhttp3.Cookie;
+
 /**
  * Created by xucong on 17/11/9.
  */
@@ -17,6 +21,26 @@ public enum SingletonBTInfo {
     private Context applicationContext;
     private String bikeImageUrl;
     private String bikeBrandImage;
+    private String bikeNo;
+
+
+    public String getBikeNo() {
+        return bikeNo;
+    }
+
+    public void setBikeNo(String bikeNo) {
+        this.bikeNo = bikeNo;
+    }
+
+    private List<Cookie> cookies;
+
+    public List<Cookie> getCookies() {
+        return cookies;
+    }
+
+    public void setCookies(List<Cookie> cookies) {
+        this.cookies = cookies;
+    }
 
     public String getBikeImageUrl() {
         return bikeImageUrl;

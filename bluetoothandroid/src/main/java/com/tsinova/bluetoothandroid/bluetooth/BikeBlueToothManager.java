@@ -27,8 +27,10 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.tsinova.bluetoothandroid.adapter.TimestampTypeAdapter;
+import com.tsinova.bluetoothandroid.network.HttpRequest;
 import com.tsinova.bluetoothandroid.pojo.BlueToothRequstInfo;
 import com.tsinova.bluetoothandroid.pojo.BlueToothResponseInfo;
+import com.tsinova.bluetoothandroid.pojo.RequestBikeCode;
 import com.tsinova.bluetoothandroid.pojo.SingletonBTInfo;
 import com.tsinova.bluetoothandroid.util.CommonUtils;
 import com.tsinova.bike.util.DESPlus;
@@ -36,9 +38,16 @@ import com.tsinova.bluetoothandroid.util.StringUtils;
 import com.tsinova.bluetoothandroid.util.UIUtils;
 
 
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.UUID;
+
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 @SuppressLint("NewApi")
 public class BikeBlueToothManager {
@@ -132,7 +141,7 @@ public class BikeBlueToothManager {
                     mScanning = false;
                     if (mOnBTListener != null) {
 
-                        
+
 //						eventBus.post(new ConnedEvent());
                         mOnBTListener.connectSuccess();
                     }
@@ -249,11 +258,15 @@ public class BikeBlueToothManager {
                 @Override
                 public void run() {
                     if (!isConnect()) {
+
+
                         if (!isAuto) { // 非自动连接时，toast提示
 //                			UIUtils.toastFalse(activity, com.tsinova.bike.R.string.bltmanager_toast_tips_ble_connect_fail);
                             if (mOnBTListener != null) {
                                 mOnBTListener.connectFailure();
                             }
+
+                            requestBikeCodeTolerant(errorNO);
 
                         }
                         try {
@@ -271,6 +284,19 @@ public class BikeBlueToothManager {
             }, CONNECT_TIMEOUT);
         }
     }
+
+
+    private void requestBikeCodeTolerant(String errorNO) {
+        RequestBikeCode requestBikeCode = new RequestBikeCode();
+        requestBikeCode.setApp(SingletonBTInfo.INSTANCE.getPackageName());
+        requestBikeCode.setBike_no(SingletonBTInfo.INSTANCE.getBikeNo());
+        requestBikeCode.setError(errorNO);
+        Gson gson = new Gson();
+        String json = gson.toJson(requestBikeCode);
+        HttpRequest httpRequest = new HttpRequest();
+        httpRequest.post("https//api.tsinova.com/app/bike_codes/tolerant", json);
+    }
+
 
     public void setNotifycation(boolean enabled) {
         if (mNotifyCharacteristic != null) {
@@ -548,10 +574,16 @@ public class BikeBlueToothManager {
 
     }
 
+
+    private String errorNO;
+    private int bestRssi = -9999;
+
     /**
      * 当用户登录并且连接过单车，会自动搜索并连接
      */
     public void searchAndConnect(final Context context, final OnGattNotifyLisener lisener) {
+        errorNO = "";
+        bestRssi = -9999;
         startTime = System.currentTimeMillis();
         final String name = SingletonBTInfo.INSTANCE.getBikeBluetoothNumber();
         if (TextUtils.isEmpty(name)) {
@@ -567,6 +599,17 @@ public class BikeBlueToothManager {
                     long searchTime = System.currentTimeMillis();
                     CommonUtils.log("*****************蓝牙搜索时间：" + (searchTime - startTime) / 1000.0 + "秒");
                     connect(mMainActivity, device.getAddress(), lisener, true);
+                } else {
+                    if (device.getName() != null) {
+                        if (device.getName().length() == 20) {
+
+                            if (rssi > bestRssi) {
+                                errorNO = device.getName();
+                                bestRssi = rssi;
+                            }
+
+                        }
+                    }
                 }
             }
 

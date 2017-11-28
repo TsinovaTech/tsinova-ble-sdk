@@ -30,7 +30,6 @@ public interface OnBikeCallback {
 
 
 
-
 	/**
 	 * 检查固件完毕
 	 * @param needUpdate 是否需要升级固件
