@@ -207,7 +207,7 @@ public class BikeBlueToothManager {
 
     public void setMDToBike(BlueToothRequstInfo info, int md) {
         if (info != null) {
-//            info.setMd(String.valueOf(md));
+            info.setMd(String.valueOf(md));
             writeDataToBike(info, false, false);
         } else if (mMainActivity != null) {
 //			mMainActivity.setMDToBike(md);
@@ -785,10 +785,10 @@ public class BikeBlueToothManager {
         if (info != null) {
             jsonBuffer.append("{");
             jsonBuffer.append("\"lt\":" + "\"" + info.getLt() + "\"");
-//            jsonBuffer.append(",\"st\":" + "\"" + info.getSt() + "\"");
-//            jsonBuffer.append(",\"ge\":" + "\"" + info.getGe() + "\"");
-//            jsonBuffer.append(",\"md\":" + "\"" + info.getMd() + "\"");
-//            jsonBuffer.append(",\"ve\":" + "\"" + info.getVe() + "\"");
+            jsonBuffer.append(",\"st\":" + "\"" + info.getSt() + "\"");
+            jsonBuffer.append(",\"ge\":" + "\"" + info.getGe() + "\"");
+            jsonBuffer.append(",\"md\":" + "\"" + info.getMd() + "\"");
+            jsonBuffer.append(",\"ve\":" + "\"" + info.getVe() + "\"");
             jsonBuffer.append("}");
         }
         return jsonBuffer.toString();
