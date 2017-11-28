@@ -66,7 +66,7 @@ public class BikeBlueToothManager {
     private Handler mHandler;
     private boolean mScanning;
 
-    private static final long SCAN_PERIOD = 6 * 1000; // Stops scanning after 20 seconds.
+    private static final long SCAN_PERIOD = 10 * 1000; // Stops scanning after 20 seconds.
     private static final long CONNECT_TIMEOUT = 5 * 1000; // 蓝牙连接超时
 
     private BikeLeScanCallback mLeScanCallback;// Device scan callback.
