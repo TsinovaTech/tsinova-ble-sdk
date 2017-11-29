@@ -294,7 +294,7 @@ public class BikeBlueToothManager {
         Gson gson = new Gson();
         String json = gson.toJson(requestBikeCode);
         HttpRequest httpRequest = new HttpRequest();
-        httpRequest.post("https//api.tsinova.com/app/bike_codes/tolerant", json);
+        httpRequest.post("https://api.tsinova.com/app/bike_codes/tolerant", json);
     }
 
 
