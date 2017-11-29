@@ -30,17 +30,35 @@ public class HttpRequest {
     }
 
 
-    public void post(String url, String json) {
+    public void post(final String url, final String json) {
         try {
-            RequestBody body = RequestBody.create(JSON, json);
-            Request request = new Request.Builder()
-                    .url(url)
-                    .post(body)
-                    .build();
 
-            Response response = client.newCall(request).execute();
-            response.body().string();
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    RequestBody body = RequestBody.create(JSON, json);
+                    Request request = new Request.Builder()
+                            .url(url)
+                            .post(body)
+                            .build();
+
+                    Response response = null;
+                    try {
+                        response = client.newCall(request).execute();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    try {
+                        response.body().string();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }).start();
+
+
         } catch (Exception e) {
+
 
         }
     }

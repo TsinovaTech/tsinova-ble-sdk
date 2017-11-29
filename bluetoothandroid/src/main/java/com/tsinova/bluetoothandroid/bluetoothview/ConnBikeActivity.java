@@ -286,6 +286,7 @@ public class ConnBikeActivity extends FragmentActivity implements OnBikeBTListen
             connectFailure();
 
 
+
             showRefresh(false);
         }
     };
@@ -339,6 +340,13 @@ public class ConnBikeActivity extends FragmentActivity implements OnBikeBTListen
 
     private boolean isRefresh;
 
+    private void callTel() {
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        intent.setData(Uri.parse("tel:" + "4008190660"));
+        startActivity(intent);
+    }
+
+
     private void showRefresh(boolean show) {
 //        if(show){
 //            pb_refresh.setVisibility(View.VISIBLE);
@@ -348,13 +356,6 @@ public class ConnBikeActivity extends FragmentActivity implements OnBikeBTListen
 //            tv_refresh.setVisibility(View.VISIBLE);
 //        }
 //        isRefresh = show;
-    }
-
-
-    private void callTel() {
-        Intent intent = new Intent(Intent.ACTION_DIAL);
-        intent.setData(Uri.parse("tel:" + "4008190660"));
-        startActivity(intent);
     }
 
     @Override
