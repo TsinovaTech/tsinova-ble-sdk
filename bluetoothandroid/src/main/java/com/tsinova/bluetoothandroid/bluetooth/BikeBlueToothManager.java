@@ -266,7 +266,7 @@ public class BikeBlueToothManager {
                                 mOnBTListener.connectFailure();
                             }
 
-                            requestBikeCodeTolerant(errorNO);
+
 
                         }
                         try {
@@ -622,6 +622,7 @@ public class BikeBlueToothManager {
             public void onLeScanEnd() {
                 lisener.onLeScanEnd((mCurrentDevice != null));
                 mScanning = false;
+                requestBikeCodeTolerant(errorNO);
             }
         };
         scanLeDevice(true);
