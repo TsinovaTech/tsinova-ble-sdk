@@ -255,6 +255,7 @@ public class ConnBikeActivity extends FragmentActivity implements OnBikeBTListen
                                     rlConnFail.setVisibility(View.GONE);
                                     rlConnBike.setVisibility(View.VISIBLE);
 
+                                    onConn = true;
                                     mDevice = device;
                                     connBike(device);
                                 }
