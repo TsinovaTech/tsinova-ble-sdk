@@ -9,6 +9,8 @@
     <application>
         <activity
             android:name=".bluetoothview.ConnBikeActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:hardwareAccelerated="true"
+            />
     </application>
 </manifest>
