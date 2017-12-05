@@ -2,6 +2,7 @@ package com.tsinova.bluetoothandroid.view;
 
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -95,10 +96,10 @@ public class RippleSpreadView extends View {
         if ((outAnimDuration < 100) || (outAnimDuration > 10000)) {
             outAnimDuration = 2000;
         }
-//        innerSizeAnimator = ObjectAnimator.ofFloat(this, "innerSize", innerSize * 1F, innerSize * 1.1F, innerSize * 1F, innerSize * 1.1F).setDuration(innerAnimDuration);
-//        innerSizeAnimator.setInterpolator(linearInterpolator);
-//        innerSizeAnimator.setRepeatMode(ValueAnimator.REVERSE);
-//        innerSizeAnimator.setRepeatCount(Integer.MAX_VALUE);
+        innerSizeAnimator = ObjectAnimator.ofFloat(this, "innerSize", innerSize * 1F, innerSize * 1.1F, innerSize * 1F, innerSize * 1.1F).setDuration(innerAnimDuration);
+        innerSizeAnimator.setInterpolator(linearInterpolator);
+        innerSizeAnimator.setRepeatMode(ValueAnimator.RESTART);
+        innerSizeAnimator.setRepeatCount(ValueAnimator.INFINITE);
 
         outSizeStart = innerSize * 0.9F;
         outSizeEnd = outSize * outSpreadValue;
@@ -127,8 +128,9 @@ public class RippleSpreadView extends View {
         }
     }
 
+    @SuppressLint("WrongConstant")
     private void initObjectAnimator(ObjectAnimator objectAnimator) {
-        objectAnimator.setRepeatMode(ValueAnimator.RESTART);
+        objectAnimator.setRepeatMode(ValueAnimator.INFINITE);
         objectAnimator.setRepeatCount(ValueAnimator.INFINITE);
     }
 
