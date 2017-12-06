@@ -34,7 +34,7 @@ import com.tsinova.bluetoothandroid.util.UIUtils;
  * Created by ihgoo on 2017/4/14.
  */
 
-public class ConnBikeActivity extends FragmentActivity implements OnBikeBTListener, View.OnClickListener {
+public class ConnBikeActivity extends FragmentActivity implements View.OnClickListener {
 
     private LinearLayout llSerachBluetooth;
     private RelativeLayout rlSerach;
@@ -69,7 +69,7 @@ public class ConnBikeActivity extends FragmentActivity implements OnBikeBTListen
     public static boolean isShow = false;
 
 
-    private OnBikeBTListener mOnBikeBTListener;
+//    private OnBikeBTListener mOnBikeBTListener;
 
     /**
      * 连接成功过为true
@@ -120,6 +120,8 @@ public class ConnBikeActivity extends FragmentActivity implements OnBikeBTListen
         tvTel1.setOnClickListener(this);
         tvTel2.setOnClickListener(this);
         btn2.setOnClickListener(this);
+
+        BikeBlueToothManager.getInstant(this).setOnBikeBTListenerLisener(mOnBikeBTListener);
 
 
         initCarImage();
@@ -283,7 +285,7 @@ public class ConnBikeActivity extends FragmentActivity implements OnBikeBTListen
                 return;
             }
 
-            connectFailure();
+            mOnBikeBTListener.connectFailure();
 
 
 
@@ -358,114 +360,116 @@ public class ConnBikeActivity extends FragmentActivity implements OnBikeBTListen
 //        isRefresh = show;
     }
 
-    @Override
-    public void biekConnecting() {
+    private OnBikeBTListener mOnBikeBTListener = new OnBikeBTListener() {
+        @Override
+        public void biekConnecting() {
 
-        if (mode == MODE_RIDING) {
-            return;
-        }
-
-
-        if (onConn) {
-            return;
-        }
-
-        if (isConned) {
-            return;
-        }
-
-        onConn = true;
-
-
-        String msg = "蓝牙连接中。。。";
-        Log.d("event", msg);
-
-
-        rlSerachFail.setVisibility(View.GONE);
-        rlSerach.setVisibility(View.GONE);
-        rlConnBike.setVisibility(View.VISIBLE);
-        rlConnFail.setVisibility(View.GONE);
-    }
-
-    @Override
-    public void connectSuccess() {
-        if (mode == MODE_RIDING) {
-            return;
-        }
-
-        onConn = false;
-
-        isConned = true;
-        String msg = "蓝牙连接成功。。。";
-        Log.d("event", msg);
-
-        rlSerachFail.setVisibility(View.GONE);
-        rlSerach.setVisibility(View.GONE);
-        rlConnBike.setVisibility(View.VISIBLE);
-        rlConnFail.setVisibility(View.GONE);
-
-
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-
-                iv1.setVisibility(View.GONE);
-                iv2.setVisibility(View.VISIBLE);
-                tv2.setVisibility(View.VISIBLE);
-                tv1.setVisibility(View.GONE);
-
+            if (mode == MODE_RIDING) {
+                return;
             }
-        }, 5000);
 
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-
-                setResult(Constant.ACTIVITY_RESULT_CONN_BIKE);
-                finish();
-
+            if (onConn) {
+                return;
             }
-        }, 7000);
-    }
 
-    @Override
-    public void connectFailure() {
-        if (mode == MODE_RIDING) {
-            return;
-        }
-        if (isConned) {
-            return;
-        }
+            if (isConned) {
+                return;
+            }
 
-        String msg = "蓝牙连接失败。。。";
-        Log.d("event", msg);
+            onConn = true;
 
 
-        rlSerachFail.setVisibility(View.VISIBLE);
-        rlSerach.setVisibility(View.GONE);
-        rlConnBike.setVisibility(View.GONE);
-        rlConnFail.setVisibility(View.GONE);
-    }
+            String msg = "蓝牙连接中。。。";
+            Log.d("event", msg);
 
-    @Override
-    public void communicationFailure() {
-        if (mode == MODE_RIDING) {
-            return;
-        }
-        if (isConned) {
-            return;
+
+            rlSerachFail.setVisibility(View.GONE);
+            rlSerach.setVisibility(View.GONE);
+            rlConnBike.setVisibility(View.VISIBLE);
+            rlConnFail.setVisibility(View.GONE);
         }
 
-        String msg = "蓝牙通讯失败。。。";
-        Log.d("event", msg);
+        @Override
+        public void connectSuccess() {
+            if (mode == MODE_RIDING) {
+                return;
+            }
+
+            onConn = false;
+
+            isConned = true;
+            String msg = "蓝牙连接成功。。。";
+            Log.d("event", msg);
+
+            rlSerachFail.setVisibility(View.GONE);
+            rlSerach.setVisibility(View.GONE);
+            rlConnBike.setVisibility(View.VISIBLE);
+            rlConnFail.setVisibility(View.GONE);
 
 
-        rlSerachFail.setVisibility(View.GONE);
-        rlSerach.setVisibility(View.GONE);
-        rlConnBike.setVisibility(View.GONE);
-        rlConnFail.setVisibility(View.VISIBLE);
-    }
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+
+                    iv1.setVisibility(View.GONE);
+                    iv2.setVisibility(View.VISIBLE);
+                    tv2.setVisibility(View.VISIBLE);
+                    tv1.setVisibility(View.GONE);
+
+                }
+            }, 5000);
+
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+
+                    setResult(Constant.ACTIVITY_RESULT_CONN_BIKE);
+                    finish();
+
+                }
+            }, 7000);
+        }
+
+        @Override
+        public void connectFailure() {
+            if (mode == MODE_RIDING) {
+                return;
+            }
+            if (isConned) {
+                return;
+            }
+
+            String msg = "蓝牙连接失败。。。";
+            Log.d("event", msg);
+
+
+            rlSerachFail.setVisibility(View.VISIBLE);
+            rlSerach.setVisibility(View.GONE);
+            rlConnBike.setVisibility(View.GONE);
+            rlConnFail.setVisibility(View.GONE);
+        }
+
+        @Override
+        public void communicationFailure() {
+            if (mode == MODE_RIDING) {
+                return;
+            }
+            if (isConned) {
+                return;
+            }
+
+            String msg = "蓝牙通讯失败。。。";
+            Log.d("event", msg);
+
+
+            rlSerachFail.setVisibility(View.GONE);
+            rlSerach.setVisibility(View.GONE);
+            rlConnBike.setVisibility(View.GONE);
+            rlConnFail.setVisibility(View.VISIBLE);
+        }
+    };
 
     @Override
     public void onClick(View v) {
