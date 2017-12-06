@@ -83,6 +83,7 @@ public class ConnBikeActivity extends FragmentActivity implements View.OnClickLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         isShow = true;
         setTheme(R.style.sdk_transparent);
         setContentView(R.layout.activity_blue_conn);
@@ -182,6 +183,9 @@ public class ConnBikeActivity extends FragmentActivity implements View.OnClickLi
     }
 
 
+    /**
+     * 正在连接单车
+     */
     private boolean onConn = false;
 
 
@@ -257,7 +261,6 @@ public class ConnBikeActivity extends FragmentActivity implements View.OnClickLi
                                     rlConnFail.setVisibility(View.GONE);
                                     rlConnBike.setVisibility(View.VISIBLE);
 
-                                    onConn = true;
                                     mDevice = device;
                                     connBike(device);
                                 }
@@ -294,6 +297,7 @@ public class ConnBikeActivity extends FragmentActivity implements View.OnClickLi
     };
 
     public void connBike(BluetoothDevice bt) {
+        onConn = true;
         stopSearch();
 //        if(AppParams.getInstance().getUser() == null){
 //        	return;
@@ -369,7 +373,7 @@ public class ConnBikeActivity extends FragmentActivity implements View.OnClickLi
             }
 
 
-            if (onConn) {
+            if (!onConn) {
                 return;
             }
 

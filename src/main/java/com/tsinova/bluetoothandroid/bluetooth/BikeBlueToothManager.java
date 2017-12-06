@@ -252,7 +252,7 @@ public class BikeBlueToothManager {
 
 
             if (mOnBTListener != null) {
-                mOnBTListener.connectFailure();
+                mOnBTListener.biekConnecting();
             }
 
             mHandler.postDelayed(new Runnable() { // 设置蓝牙连接超时
