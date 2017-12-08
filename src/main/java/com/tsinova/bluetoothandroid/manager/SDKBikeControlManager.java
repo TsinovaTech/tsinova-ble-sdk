@@ -315,7 +315,7 @@ public class SDKBikeControlManager extends BikeController {
                 isConnect = false;
 //                mIsCheckedUpdate = false;
                 disconnected();
-                appDisconnect();
+                appDisconnected();
             }
         }
 
@@ -724,7 +724,7 @@ public class SDKBikeControlManager extends BikeController {
 //            OBDManager.getObdInfo().setFirst(true);
             mBLEManager.disconnect();
             isConnect = false;
-            appDisconnected();
+            appDisconnect();
         }
     }
 
