@@ -287,16 +287,7 @@ public class BikeBlueToothManager {
     }
 
 
-    private void requestBikeCodeTolerant(String errorNO) {
-        RequestBikeCode requestBikeCode = new RequestBikeCode();
-        requestBikeCode.setApp(SingletonBTInfo.INSTANCE.getPackageName()+ BuildConfig.VERSION_NAME);
-        requestBikeCode.setBike_no(SingletonBTInfo.INSTANCE.getBikeNo());
-        requestBikeCode.setError(errorNO);
-        Gson gson = new Gson();
-        String json = gson.toJson(requestBikeCode);
-        HttpRequest httpRequest = new HttpRequest();
-        httpRequest.post("http://api.tsinova.com/app/bike_codes/tolerant", json);
-    }
+
 
 
     public void setNotifycation(boolean enabled) {
@@ -576,15 +567,13 @@ public class BikeBlueToothManager {
     }
 
 
-    private String errorNO;
-    private int bestRssi = -9999;
+
 
     /**
      * 当用户登录并且连接过单车，会自动搜索并连接
      */
     public void searchAndConnect(final Context context, final OnGattNotifyLisener lisener) {
-        errorNO = "";
-        bestRssi = -9999;
+
         startTime = System.currentTimeMillis();
         final String name = SingletonBTInfo.INSTANCE.getBikeBluetoothNumber();
         if (TextUtils.isEmpty(name)) {
@@ -600,18 +589,6 @@ public class BikeBlueToothManager {
                     long searchTime = System.currentTimeMillis();
                     CommonUtils.log("*****************蓝牙搜索时间：" + (searchTime - startTime) / 1000.0 + "秒");
                     connect(mMainActivity, device.getAddress(), lisener, true);
-                } else {
-                    if (device.getName() != null) {
-                        String bleName = device.getName().replaceAll(" ", "");
-                        if (bleName.length() == 20) {
-
-                            if (rssi > bestRssi) {
-                                errorNO = device.getName();
-                                bestRssi = rssi;
-                            }
-
-                        }
-                    }
                 }
             }
 
@@ -624,7 +601,7 @@ public class BikeBlueToothManager {
             public void onLeScanEnd() {
                 lisener.onLeScanEnd((mCurrentDevice != null));
                 mScanning = false;
-                requestBikeCodeTolerant(errorNO);
+
             }
         };
         scanLeDevice(true);

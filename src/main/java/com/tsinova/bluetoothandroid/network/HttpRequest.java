@@ -1,5 +1,7 @@
 package com.tsinova.bluetoothandroid.network;
 
+import android.util.Log;
+
 import com.tsinova.bluetoothandroid.pojo.SingletonBTInfo;
 
 import java.io.IOException;
@@ -21,7 +23,7 @@ import okhttp3.Response;
 public class HttpRequest {
 
     public static final MediaType JSON
-            = MediaType.parse("application/x-www-form-urlencoded");
+            = MediaType.parse("application/json");
 
     private OkHttpClient client;
 
@@ -45,7 +47,9 @@ public class HttpRequest {
 
                     Response response = null;
                     response = client.newCall(request).execute();
-                    response.body().string();
+
+                    Log.i("okhttp",response.body().string());
+
                 } catch (Exception e) {
 
 

@@ -18,13 +18,17 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.tsinova.bluetoothandroid.BuildConfig;
 import com.tsinova.bluetoothandroid.R;
 import com.tsinova.bluetoothandroid.bluetooth.BikeBlueToothManager;
 import com.tsinova.bluetoothandroid.bluetooth.BikeLeScanCallback;
 import com.tsinova.bluetoothandroid.bluetooth.OnBikeBTListener;
 import com.tsinova.bluetoothandroid.common.Constant;
 import com.tsinova.bluetoothandroid.manager.SDKBikeControlManager;
+import com.tsinova.bluetoothandroid.network.HttpRequest;
+import com.tsinova.bluetoothandroid.pojo.RequestBikeCode;
 import com.tsinova.bluetoothandroid.pojo.SingletonBTInfo;
 import com.tsinova.bluetoothandroid.util.CommonUtils;
 import com.tsinova.bluetoothandroid.util.UIUtils;
@@ -231,6 +235,9 @@ public class ConnBikeActivity extends FragmentActivity implements View.OnClickLi
 
     private BluetoothDevice mDevice;
 
+    private String errorNO;
+    private int bestRssi = -9999;
+
 
     //    private int i;
     private BikeLeScanCallback mLeScanCallback = new BikeLeScanCallback() {
@@ -239,6 +246,10 @@ public class ConnBikeActivity extends FragmentActivity implements View.OnClickLi
             if (device == null) {
                 return;
             }
+
+
+            bestRssi = -9999;
+
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
@@ -267,6 +278,18 @@ public class ConnBikeActivity extends FragmentActivity implements View.OnClickLi
                             }, 5000);
 
 
+                        }else {
+                            if (device.getName() != null) {
+                                String bleName = device.getName().replaceAll(" ", "");
+                                if (bleName.length() == 20) {
+
+                                    if (rssi > bestRssi) {
+                                        errorNO = device.getName();
+                                        bestRssi = rssi;
+                                    }
+
+                                }
+                            }
                         }
                     }
                     if (mManager != null && mManager.isConnect()) {
@@ -284,6 +307,7 @@ public class ConnBikeActivity extends FragmentActivity implements View.OnClickLi
 
         @Override
         public void onLeScanEnd() {
+            requestBikeCodeTolerant(errorNO);
             if (onConn) {
                 return;
             }
@@ -295,6 +319,18 @@ public class ConnBikeActivity extends FragmentActivity implements View.OnClickLi
             showRefresh(false);
         }
     };
+
+    private void requestBikeCodeTolerant(String errorNO) {
+        RequestBikeCode requestBikeCode = new RequestBikeCode();
+        requestBikeCode.setApp(SingletonBTInfo.INSTANCE.getPackageName()+ " "+BuildConfig.VERSION_NAME);
+        requestBikeCode.setBike_no(SingletonBTInfo.INSTANCE.getBikeNo());
+        requestBikeCode.setError(errorNO);
+        Gson gson = new Gson();
+        String json = gson.toJson(requestBikeCode);
+        Log.e("requestBikeCodeTolerant",json);
+        HttpRequest httpRequest = new HttpRequest();
+        httpRequest.post("https://api.tsinova.com/app/bike_codes/tolerant", json);
+    }
 
     public void connBike(BluetoothDevice bt) {
         onConn = true;
