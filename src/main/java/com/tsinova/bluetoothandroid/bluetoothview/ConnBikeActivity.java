@@ -307,11 +307,12 @@ public class ConnBikeActivity extends FragmentActivity implements View.OnClickLi
 
         @Override
         public void onLeScanEnd() {
-            requestBikeCodeTolerant(errorNO);
+
             if (onConn) {
                 return;
             }
 
+            requestBikeCodeTolerant(errorNO);
             mOnBikeBTListener.connectFailure();
 
 
