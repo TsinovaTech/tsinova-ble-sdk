@@ -500,7 +500,7 @@ public class ConnBikeActivity extends FragmentActivity implements View.OnClickLi
                 return;
             }
 
-            String msg = "蓝牙通讯失败。。。";
+            String msg = "蓝牙通信失败。。。";
             Log.d("event", msg);
 
 
