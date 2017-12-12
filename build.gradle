@@ -46,7 +46,7 @@ publish {
     userOrg = 'warry19940712'//bintray.com用户名
     groupId = 'com.tsinova'//jcenter上的路径
     artifactId = 'TsinovaBluetooth'//项目名称
-    publishVersion = '1.0.10'//版本号
+    publishVersion = '1.0.11'//版本号
     desc = 'A Bluetooth module to control E-Bike of Tsinova.'//描述，不重要
     website = 'https://github.com/TsinovaTech/TsinovaBluetooth'//网站，最好有，不重要
 }

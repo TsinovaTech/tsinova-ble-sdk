@@ -117,7 +117,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerInParent="true"
                 android:layout_marginTop="100dp"
-                android:text="通讯失败"
+                android:text="通信失败"
                 android:textColor="#ffffff"
                 android:textSize="21sp" />
 
