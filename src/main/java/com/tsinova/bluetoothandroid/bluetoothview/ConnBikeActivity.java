@@ -80,6 +80,7 @@ public class ConnBikeActivity extends FragmentActivity implements View.OnClickLi
      */
     private boolean isConned;
     private boolean isConnecting = false;
+    private int tolerantMarker = 0;
 
     private BikeBlueToothManager mManager;
     private static SDKBikeControlManager mSDKBikeControlManager;
@@ -315,8 +316,10 @@ public class ConnBikeActivity extends FragmentActivity implements View.OnClickLi
             if (isConnecting) {
                 return;
             }
-
-            requestBikeCodeTolerant(errorNO);
+            if(tolerantMarker < 1) {
+                requestBikeCodeTolerant(errorNO);
+                tolerantMarker = tolerantMarker + 1;
+            }
             mOnBikeBTListener.connectFailure();
 
 
