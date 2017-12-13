@@ -79,6 +79,7 @@ public class ConnBikeActivity extends FragmentActivity implements View.OnClickLi
      * 连接成功过为true
      */
     private boolean isConned;
+    private boolean isConnecting = false;
 
     private BikeBlueToothManager mManager;
     private static SDKBikeControlManager mSDKBikeControlManager;
@@ -261,7 +262,7 @@ public class ConnBikeActivity extends FragmentActivity implements View.OnClickLi
                     }
                     if (!TextUtils.isEmpty(device.getName())) {
                         if (device.getName().equals(SingletonBTInfo.INSTANCE.getBikeBluetoothNumber())) {
-
+                            isConnecting = true;
                             new Handler().postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
@@ -309,6 +310,9 @@ public class ConnBikeActivity extends FragmentActivity implements View.OnClickLi
         public void onLeScanEnd() {
 
             if (onConn) {
+                return;
+            }
+            if (isConnecting) {
                 return;
             }
 
