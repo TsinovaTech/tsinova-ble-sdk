@@ -317,8 +317,10 @@ public class ConnBikeActivity extends FragmentActivity implements View.OnClickLi
                 return;
             }
             if(tolerantMarker < 1) {
-                requestBikeCodeTolerant(errorNO);
-                tolerantMarker = tolerantMarker + 1;
+                if(!TextUtils.isEmpty(errorNO)) {
+                    requestBikeCodeTolerant(errorNO);
+                    tolerantMarker = tolerantMarker + 1;
+                }
             }
             mOnBikeBTListener.connectFailure();
 
@@ -329,7 +331,7 @@ public class ConnBikeActivity extends FragmentActivity implements View.OnClickLi
     };
 
     private void requestBikeCodeTolerant(String errorNO) {
-        if(errorNO != null) {
+        if(!TextUtils.isEmpty(errorNO)) {
             RequestBikeCode requestBikeCode = new RequestBikeCode();
             requestBikeCode.setApp(SingletonBTInfo.INSTANCE.getPackageName() + " " + BuildConfig.VERSION_NAME);
             requestBikeCode.setBike_no(SingletonBTInfo.INSTANCE.getBikeNo());

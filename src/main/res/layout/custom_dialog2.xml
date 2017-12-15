@@ -22,7 +22,7 @@
             android:id="@+id/rl_serach_fail"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="6dp">
 
 
             <TextView
@@ -102,7 +102,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="服务时间：周一至周日9:30-18:30(法定节假日除外)"
+                    android:text="服务时间：周一至周五，上午9:00~12:00，"
+                    android:textColor="#ffffff"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="下午13:00~18:00（不包含法定节假日）"
                     android:textColor="#ffffff"
                     android:textSize="12sp" />
 
