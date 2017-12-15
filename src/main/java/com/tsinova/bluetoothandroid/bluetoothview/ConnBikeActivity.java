@@ -329,15 +329,17 @@ public class ConnBikeActivity extends FragmentActivity implements View.OnClickLi
     };
 
     private void requestBikeCodeTolerant(String errorNO) {
-        RequestBikeCode requestBikeCode = new RequestBikeCode();
-        requestBikeCode.setApp(SingletonBTInfo.INSTANCE.getPackageName()+ " "+BuildConfig.VERSION_NAME);
-        requestBikeCode.setBike_no(SingletonBTInfo.INSTANCE.getBikeNo());
-        requestBikeCode.setError(errorNO);
-        Gson gson = new Gson();
-        String json = gson.toJson(requestBikeCode);
-        Log.e("requestBikeCodeTolerant",json);
-        HttpRequest httpRequest = new HttpRequest();
-        httpRequest.post("https://api.tsinova.com/app/bike_codes/tolerant", json);
+        if(errorNO != null) {
+            RequestBikeCode requestBikeCode = new RequestBikeCode();
+            requestBikeCode.setApp(SingletonBTInfo.INSTANCE.getPackageName() + " " + BuildConfig.VERSION_NAME);
+            requestBikeCode.setBike_no(SingletonBTInfo.INSTANCE.getBikeNo());
+            requestBikeCode.setError(errorNO);
+            Gson gson = new Gson();
+            String json = gson.toJson(requestBikeCode);
+            Log.e("requestBikeCodeTolerant", json);
+            HttpRequest httpRequest = new HttpRequest();
+            httpRequest.post("https://api.tsinova.com/app/bike_codes/tolerant", json);
+        }
     }
 
     public void connBike(BluetoothDevice bt) {
