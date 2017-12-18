@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">BlueToothAndroid</string>
+
+    <string name="sdk_bltmanager_toast_tips_not_ble">BLE is not supported for your device</string>
+    <string name="sdk_bltmanager_toast_tips_ble_connect_fail">Bluetooth connection failed, please try later</string>
+    <string name="sdk_bltmanager_search_bl_dialog_title">Do you want to search peripheral devices?</string>
+    <string name="sdk_bltmanager_search_bl_dialog_content">Please click Confirm to enter the search page</string>
+    <string name="sdk_bltmanager_search_bl_dialog_cancel">Cancel</string>
+    <string name="sdk_bltmanager_search_bl_dialog_ok">Confirm</string>
+
+
+    <string name="btlist_toast_tip_bt_num_wrong">请连接与车架号对应的蓝牙号</string>
+
+
+
+    <string name="sdk_bluetooth_conn_turned_on">Behalten Sie Ihr Smartphone in der Nähe des eBikes und schalten Sie es ein</string>
+    <string name="sdk_bluetooth_conn_search_failure">Fehlersuche</string>
+    <string name="sdk_bluetooth_conn_bike_not_found">Ein eBike mit dieser Rahmennummer wurde nicht gefunden</string>
+    <string name="sdk_bluetooth_conn_retry">Erneut versuchen</string>
+    <string name="sdk_bluetooth_conn_communication_failure">Kommunikationsfehler</string>
+    <string name="sdk_bluetooth_conn_reboot">Bitte starten Sie das eBike erneut oder versuchen es später</string>
+    <string name="sdk_bluetooth_conn_reconnect">Erneut verbinden</string>
+    <string name="sdk_bluetooth_conn_connecting">Verbinden</string>
+    <string name="sdk_bluetooth_conn_connected">Verbunden</string>
+    <string name="sdk_bluetooth_conn_remarks">Anmerkungen</string>
+    <string name="sdk_bluetooth_conn_is_succesful">Steht die Verbindung mit dem eBike?</string>
+
+</resources>

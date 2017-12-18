@@ -19,6 +19,15 @@ public enum SingletonBTInfo {
     private String bikeNo;
     private String cookies;
     private boolean isEncryption = true;
+    private boolean isHasHotline = true;
+
+    public boolean isHasHotline() {
+        return isHasHotline;
+    }
+
+    public void setHasHotline(boolean hasHotline) {
+        isHasHotline = hasHotline;
+    }
 
     public String getBikeBluetoothNumber() {
         return bikeBluetoothNumber;

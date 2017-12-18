@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="sdk_bltmanager_toast_tips_not_ble">Bluetooth no compatible por su dispositivo</string>
-    <string name="sdk_bltmanager_search_bl_dialog_title">¿Quiere buscar dispositivos cercanos?</string>
-    <string name="sdk_bltmanager_search_bl_dialog_content">Haga click en confirmar para acceder a la página de búsqueda</string>
     <string name="sdk_bltmanager_search_bl_dialog_cancel">Cancelar</string>
     <string name="sdk_bltmanager_search_bl_dialog_ok">Confirmar</string>
 </resources>

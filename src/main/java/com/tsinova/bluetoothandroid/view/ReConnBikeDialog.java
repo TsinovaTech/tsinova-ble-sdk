@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 
 import com.tsinova.bluetoothandroid.R;
+import com.tsinova.bluetoothandroid.pojo.SingletonBTInfo;
 
 
 /**
@@ -85,6 +86,16 @@ public class ReConnBikeDialog extends Dialog {
 			// instantiate the dialog with the custom Theme
 			final ReConnBikeDialog dialog = new ReConnBikeDialog(context,R.style.CustomDialog);
 			View layout = inflater.inflate(R.layout.custom_dialog2, null);
+
+
+			View ll_hotline = layout.findViewById(R.id.ll_hotline);
+
+			if (SingletonBTInfo.INSTANCE.isHasHotline()){
+				ll_hotline.setVisibility(View.VISIBLE);
+			}else {
+				ll_hotline.setVisibility(View.INVISIBLE);
+			}
+
 			View btn_1 = layout.findViewById(R.id.btn_1);
 			View ll_close = layout.findViewById(R.id.ll_close);
 
