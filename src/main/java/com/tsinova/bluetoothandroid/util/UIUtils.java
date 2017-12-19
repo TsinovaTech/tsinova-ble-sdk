@@ -10,7 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tsinova.bluetoothandroid.R;
-import com.tsinova.bluetoothandroid.view.CustomDialog;
+import com.tsinova.bluetoothandroid.view.BluetoothCustomDialog;
 
 /**
  * Created by xucong on 17/11/9.
@@ -31,7 +31,7 @@ public class UIUtils {
                                       DialogInterface.OnClickListener negativeListener,
                                       String positiveTitle,
                                       DialogInterface.OnClickListener positiveListener) {
-        CustomDialog.Builder customBuilder = new CustomDialog.Builder(context);
+        BluetoothCustomDialog.Builder customBuilder = new BluetoothCustomDialog.Builder(context);
 //		 AlertDialog.Builder customBuilder = new AlertDialog.Builder(context);
         customBuilder.setTitle(title).setMessage(message)
                 .setNegativeButton(negativeTitle, negativeListener)
@@ -70,5 +70,26 @@ public class UIUtils {
         toast.setGravity(Gravity.CENTER, 0, 0);
         toast.show();
     }
+
+    /**
+     * 创建只带确定按钮的Dialog
+     *
+     * @param title
+     * @param message
+     * @return Dialog
+     */
+    public static Dialog createSigleBtnDialog(Context context, String title,
+                                              String message,
+                                              String positiveTitle,
+                                              DialogInterface.OnClickListener positiveListener) {
+        BluetoothCustomDialog.Builder customBuilder = new BluetoothCustomDialog.Builder(context);
+//		 AlertDialog.Builder customBuilder = new AlertDialog.Builder(context);
+        customBuilder.setTitle(title).setMessage(message)
+                .setPositiveButton(positiveTitle, positiveListener);
+
+        return customBuilder.create();
+
+    }
+
 }
 

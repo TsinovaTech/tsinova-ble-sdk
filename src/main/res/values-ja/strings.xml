@@ -6,4 +6,6 @@
     <string name="sdk_bltmanager_search_bl_dialog_content">「はい」をクリックして捜索画面に入ってください</string>
     <string name="sdk_bltmanager_search_bl_dialog_cancel">キャンセル</string>
     <string name="sdk_bltmanager_search_bl_dialog_ok">確定</string>
+    <string name="sdk_bltmanager_search_bl_dialog_tip">お知らせ</string>
+    <string name="sdk_bltmanager_search_bl_dialog_open_ble">「設定」メニューから「Bluetooth」をタップし、スイッチをオンにします</string>
 </resources>

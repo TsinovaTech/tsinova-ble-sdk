@@ -6,4 +6,6 @@
     <string name="sdk_bltmanager_search_bl_dialog_content">확인을 눌러 검색창에 들어가세요</string>
     <string name="sdk_bltmanager_search_bl_dialog_cancel">취소</string>
     <string name="sdk_bltmanager_search_bl_dialog_ok">확인</string>
+    <string name="sdk_bltmanager_search_bl_dialog_tip">제시</string>
+    <string name="sdk_bltmanager_search_bl_dialog_open_ble">설정“에서  블루투스 켜기</string>
 </resources>

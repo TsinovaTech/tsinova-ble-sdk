@@ -15,13 +15,13 @@ import com.tsinova.bluetoothandroid.R;
 /**
  * 
  */
-public class CustomDialog extends Dialog {
+public class BluetoothCustomDialog extends Dialog {
 
-	public CustomDialog(Context context, int theme) {
+	public BluetoothCustomDialog(Context context, int theme) {
 		super(context, theme);
 	}
 
-	public CustomDialog(Context context) {
+	public BluetoothCustomDialog(Context context) {
 		super(context);
 	}
 
@@ -178,10 +178,10 @@ public class CustomDialog extends Dialog {
 		/**
 		 * Create the custom dialog
 		 */
-		public CustomDialog create() {
+		public BluetoothCustomDialog create() {
 			LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			// instantiate the dialog with the custom Theme
-			final CustomDialog dialog = new CustomDialog(context,R.style.SDK_CustomDialog);
+			final BluetoothCustomDialog dialog = new BluetoothCustomDialog(context,R.style.SDK_CustomDialog);
 			View layout = inflater.inflate(R.layout.custom_dialog, null);
 			dialog.addContentView(layout, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 			// set the dialog title

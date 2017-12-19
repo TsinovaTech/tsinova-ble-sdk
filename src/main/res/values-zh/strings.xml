@@ -6,4 +6,6 @@
     <string name="sdk_bltmanager_search_bl_dialog_content">是否连接已绑定的电单车？</string>
     <string name="sdk_bltmanager_search_bl_dialog_cancel">取消</string>
     <string name="sdk_bltmanager_search_bl_dialog_ok">确定</string>
+    <string name="sdk_bltmanager_search_bl_dialog_tip">提示</string>
+    <string name="sdk_bltmanager_search_bl_dialog_open_ble">请在“设置”中打开蓝牙</string>
 </resources>
