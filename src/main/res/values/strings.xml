@@ -7,12 +7,7 @@
     <string name="sdk_bltmanager_search_bl_dialog_ok">Confirm</string>
     <string name="sdk_bltmanager_search_bl_dialog_tip">Tip</string>
     <string name="sdk_bltmanager_search_bl_dialog_open_ble">Please open Bluetooth at “Settings</string>
-
-
     <string name="btlist_toast_tip_bt_num_wrong">请连接与车架号对应的蓝牙号</string>
-
-
-
     <string name="sdk_bluetooth_conn_turned_on">请将手机靠近电单车并确保电单车电源已打开</string>
     <string name="sdk_bluetooth_conn_search_failure">搜索失败</string>
     <string name="sdk_bluetooth_conn_bike_not_found">未搜索到与此车辆编号对应的电单车</string>
