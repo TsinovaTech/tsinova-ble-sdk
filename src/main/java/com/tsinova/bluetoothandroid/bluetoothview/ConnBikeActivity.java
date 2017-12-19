@@ -71,8 +71,8 @@ public class ConnBikeActivity extends FragmentActivity implements View.OnClickLi
     public static int MODE_RIDING = 1;
     public static int MODE_SERACH = 0;
     public static boolean isShow = false;
-
-
+    private LinearLayout llHotline;
+    private LinearLayout llHotline2;
 //    private OnBikeBTListener mOnBikeBTListener;
 
     /**
@@ -120,7 +120,16 @@ public class ConnBikeActivity extends FragmentActivity implements View.OnClickLi
         rlConnBike = (RelativeLayout) findViewById(R.id.rl_conn_bike);
         llClose = (LinearLayout) findViewById(R.id.ll_close);
         activityMain = (RelativeLayout) findViewById(R.id.activity_main);
+        llHotline= (LinearLayout) findViewById(R.id.ll_hotline);
+        llHotline2= (LinearLayout) findViewById(R.id.ll_hotline2);
 
+        if (SingletonBTInfo.INSTANCE.isHasHotline()){
+            llHotline.setVisibility(View.VISIBLE);
+            llHotline2.setVisibility(View.VISIBLE);
+        }else {
+            llHotline.setVisibility(View.INVISIBLE);
+            llHotline2.setVisibility(View.INVISIBLE);
+        }
 
         btn1.setOnClickListener(this);
         llClose.setOnClickListener(this);

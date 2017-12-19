@@ -2,10 +2,19 @@
 <resources>
     <string name="sdk_bltmanager_toast_tips_not_ble">BLEは利用できません</string>
     <string name="sdk_bltmanager_toast_tips_ble_connect_fail">ブルートゥースに接続できないので、しばらく待ってやり直してください</string>
-    <string name="sdk_bltmanager_search_bl_dialog_title">周りの設備を捜索しますか？</string>
-    <string name="sdk_bltmanager_search_bl_dialog_content">「はい」をクリックして捜索画面に入ってください</string>
     <string name="sdk_bltmanager_search_bl_dialog_cancel">キャンセル</string>
     <string name="sdk_bltmanager_search_bl_dialog_ok">確定</string>
     <string name="sdk_bltmanager_search_bl_dialog_tip">お知らせ</string>
     <string name="sdk_bltmanager_search_bl_dialog_open_ble">「設定」メニューから「Bluetooth」をタップし、スイッチをオンにします</string>
+    <string name="sdk_bluetooth_conn_turned_on">電動アシスト自転車の電源をONにしてください。スマートフォンを車体に近づいてください。</string>
+    <string name="sdk_bluetooth_conn_search_failure">ペアリング失敗</string>
+    <string name="sdk_bluetooth_conn_bike_not_found">対象電動アシスト自転車の検索はできませんでした。</string>
+    <string name="sdk_bluetooth_conn_retry">もう一回</string>
+    <string name="sdk_bluetooth_conn_communication_failure">通信失敗</string>
+    <string name="sdk_bluetooth_conn_reboot">電動アシスト自転車を再起動するか後ほどもう一回お試しください。</string>
+    <string name="sdk_bluetooth_conn_reconnect">再度接続</string>
+    <string name="sdk_bluetooth_conn_connecting">接続中</string>
+    <string name="sdk_bluetooth_conn_connected">接続完了</string>
+    <string name="sdk_bluetooth_conn_remarks">ヒント</string>
+    <string name="sdk_bluetooth_conn_is_succesful">ペアリング済みの電動アシスト自転車に接続しましか？</string>
 </resources>

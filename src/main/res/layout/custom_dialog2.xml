@@ -32,7 +32,7 @@
                 android:layout_below="@+id/tv_11"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="16dp"
-                android:text="未搜索到与此车辆编号对应的电单车"
+                android:text="@string/sdk_bluetooth_conn_bike_not_found"
                 android:textColor="#ffffff" />
 
 
@@ -47,13 +47,14 @@
                 android:layout_marginTop="30dp"
                 android:background="@drawable/btn_round_bg_whit"
                 android:gravity="center"
-                android:text="重新连接"
+                android:text="@string/sdk_bluetooth_conn_reconnect"
                 android:textColor="#1e1f20"
                 android:textSize="16sp"
                 android:textStyle="normal" />
 
 
             <LinearLayout
+                android:id="@+id/ll_hotline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
@@ -125,7 +126,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerInParent="true"
                 android:layout_marginTop="100dp"
-                android:text="通信失败"
+                android:text="@string/sdk_bluetooth_conn_communication_failure"
                 android:textColor="#ffffff"
                 android:textSize="21sp" />
 

@@ -825,8 +825,8 @@ public class BikeBlueToothManager {
             return;
         }
         try {
-            String title = activity.getResources().getString(com.tsinova.bluetoothandroid.R.string.sdk_bltmanager_search_bl_dialog_title);
-            String content = activity.getResources().getString(com.tsinova.bluetoothandroid.R.string.sdk_bltmanager_search_bl_dialog_content);
+            String title = activity.getResources().getString(com.tsinova.bluetoothandroid.R.string.sdk_bluetooth_conn_remarks);
+            String content = activity.getResources().getString(com.tsinova.bluetoothandroid.R.string.sdk_bluetooth_conn_is_succesful);
             String cancel = activity.getResources().getString(com.tsinova.bluetoothandroid.R.string.sdk_bltmanager_search_bl_dialog_cancel);
             String ok = activity.getResources().getString(com.tsinova.bluetoothandroid.R.string.sdk_bltmanager_search_bl_dialog_ok);
             UIUtils.createDialog(activity, title, content, cancel, new Dialog.OnClickListener() {

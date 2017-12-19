@@ -52,12 +52,13 @@
             </LinearLayout>
 
             <TextView
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="20dp"
-                android:text="请将手机靠近电单车并确保电单车电源已打开"
+                android:text="@string/sdk_bluetooth_conn_turned_on"
                 android:textColor="#fefefe"
                 android:textSize="14sp" />
 
@@ -89,7 +90,7 @@
                 android:layout_below="@+id/tv_11"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="16dp"
-                android:text="未搜索到与此车辆编号对应的电单车"
+                android:text="@string/sdk_bluetooth_conn_bike_not_found"
                 android:textColor="#ffffff" />
 
 
@@ -104,13 +105,14 @@
                 android:layout_marginTop="30dp"
                 android:background="@drawable/btn_round_bg_whit"
                 android:gravity="center"
-                android:text="重试"
+                android:text="@string/sdk_bluetooth_conn_retry"
                 android:textColor="@color/sdk_control_btn_finish"
                 android:textSize="16sp"
                 android:textStyle="normal" />
 
 
             <LinearLayout
+                android:id="@+id/ll_hotline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
@@ -182,7 +184,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerInParent="true"
                 android:layout_marginTop="120dp"
-                android:text="搜索失败"
+                android:text="sdk_bluetooth_conn_search_failure"
                 android:textColor="#ffffff"
                 android:textSize="21sp" />
 
@@ -205,7 +207,7 @@
                 android:layout_below="@+id/tv_21"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="16dp"
-                android:text="请重启电单车或稍后重试"
+                android:text="@string/sdk_bluetooth_conn_reboot"
                 android:textColor="#ffffff" />
 
 
@@ -220,13 +222,14 @@
                 android:layout_marginTop="30dp"
                 android:background="@drawable/btn_round_bg_whit"
                 android:gravity="center"
-                android:text="重新连接"
+                android:text="@string/sdk_bluetooth_conn_reconnect"
                 android:textColor="@color/sdk_control_btn_finish"
                 android:textSize="16sp"
                 android:textStyle="normal" />
 
 
             <LinearLayout
+                android:id="@+id/ll_hotline2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
@@ -299,7 +302,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerInParent="true"
                 android:layout_marginTop="120dp"
-                android:text="通信失败"
+                android:text="@string/sdk_bluetooth_conn_communication_failure"
                 android:textColor="#ffffff"
                 android:textSize="21sp" />
 
@@ -354,7 +357,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="18dp"
-                android:text="正在连接..."
+                android:text="@string/sdk_bluetooth_conn_connecting"
                 android:textColor="#ffffff"
                 android:textSize="14sp" />
 
@@ -366,7 +369,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="18dp"
-                android:text="连接成功"
+                android:text="@string/sdk_bluetooth_conn_connected"
                 android:textColor="#ffffff"
                 android:textSize="14sp"
                 android:visibility="gone" />

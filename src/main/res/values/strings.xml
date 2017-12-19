@@ -3,8 +3,6 @@
 
     <string name="sdk_bltmanager_toast_tips_not_ble">BLE is not supported for your device</string>
     <string name="sdk_bltmanager_toast_tips_ble_connect_fail">Bluetooth connection failed, please try later</string>
-    <string name="sdk_bltmanager_search_bl_dialog_title">Do you want to search peripheral devices?</string>
-    <string name="sdk_bltmanager_search_bl_dialog_content">Please click Confirm to enter the search page</string>
     <string name="sdk_bltmanager_search_bl_dialog_cancel">Cancel</string>
     <string name="sdk_bltmanager_search_bl_dialog_ok">Confirm</string>
     <string name="sdk_bltmanager_search_bl_dialog_tip">Tip</string>
@@ -13,5 +11,18 @@
 
     <string name="btlist_toast_tip_bt_num_wrong">请连接与车架号对应的蓝牙号</string>
 
+
+
+    <string name="sdk_bluetooth_conn_turned_on">请将手机靠近电单车并确保电单车电源已打开</string>
+    <string name="sdk_bluetooth_conn_search_failure">搜索失败</string>
+    <string name="sdk_bluetooth_conn_bike_not_found">未搜索到与此车辆编号对应的电单车</string>
+    <string name="sdk_bluetooth_conn_retry">重试</string>
+    <string name="sdk_bluetooth_conn_communication_failure">通信失败</string>
+    <string name="sdk_bluetooth_conn_reboot">请重启电单车或稍后重试</string>
+    <string name="sdk_bluetooth_conn_reconnect">重新连接</string>
+    <string name="sdk_bluetooth_conn_connecting">正在连接...</string>
+    <string name="sdk_bluetooth_conn_connected">连接成功</string>
+    <string name="sdk_bluetooth_conn_remarks">提示</string>
+    <string name="sdk_bluetooth_conn_is_succesful">是否连接已绑定的电单车？</string>
 
 </resources>
