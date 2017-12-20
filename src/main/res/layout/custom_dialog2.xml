@@ -22,8 +22,20 @@
             android:id="@+id/rl_serach_fail"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="6dp">
+            android:layout_marginBottom="6dp"
+            android:gravity="center">
 
+            <TextView
+                android:id="@+id/tv_11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="100dp"
+                android:text="@string/sdk_bluetooth_conn_communication_failure"
+                android:textColor="#ffffff"
+                android:textSize="21sp" />
 
             <TextView
                 android:id="@+id/tv_12"
@@ -120,18 +132,6 @@
 
 
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/tv_11"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_centerInParent="true"
-                android:layout_marginTop="100dp"
-                android:text="@string/sdk_bluetooth_conn_communication_failure"
-                android:textColor="#ffffff"
-                android:textSize="21sp" />
 
 
         </RelativeLayout>
