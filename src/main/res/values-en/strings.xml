@@ -1,9 +1,11 @@
 <resources>
+    <string name="btlist_toast_tip_bt_num_wrong">请连接与车架号对应的蓝牙号</string>
     <string name="sdk_bltmanager_toast_tips_not_ble">BLE is not supported for your device</string>
     <string name="sdk_bltmanager_toast_tips_ble_connect_fail">Bluetooth connection failed, please try later</string>
     <string name="sdk_bltmanager_search_bl_dialog_cancel">Cancel</string>
     <string name="sdk_bltmanager_search_bl_dialog_ok">Confirm</string>
-    <string name="btlist_toast_tip_bt_num_wrong">请连接与车架号对应的蓝牙号</string>
+    <string name="sdk_bltmanager_search_bl_dialog_tip">Tps</string>
+    <string name="sdk_bltmanager_search_bl_dialog_open_ble">Please open Bluetooth at "Settings"</string>
     <string name="sdk_bluetooth_conn_turned_on">be sure that your phone is close to the bike and that the power is turned on </string>
     <string name="sdk_bluetooth_conn_search_failure">Search Failure</string>
     <string name="sdk_bluetooth_conn_bike_not_found">The bike corresponding to this frame number is not found </string>
