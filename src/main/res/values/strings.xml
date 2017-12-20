@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">BlueToothAndroid</string>
     <string name="sdk_bltmanager_toast_tips_not_ble">设备不暂不支持BLE</string>
     <string name="sdk_bltmanager_toast_tips_ble_connect_fail">蓝牙连接失败，请稍后重试</string>
     <string name="sdk_bltmanager_search_bl_dialog_cancel">取消</string>
