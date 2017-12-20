@@ -53,11 +53,14 @@
 
             <TextView
 
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="20dp"
+                android:gravity="center"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
                 android:text="@string/sdk_bluetooth_conn_turned_on"
                 android:textColor="#fefefe"
                 android:textSize="14sp" />
@@ -85,11 +88,14 @@
 
             <TextView
                 android:id="@+id/tv_12"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_11"
                 android:layout_centerHorizontal="true"
+                android:gravity="center"
                 android:layout_marginTop="16dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
                 android:text="@string/sdk_bluetooth_conn_bike_not_found"
                 android:textColor="#ffffff" />
 
@@ -202,12 +208,15 @@
 
             <TextView
                 android:id="@+id/tv_22"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:layout_below="@+id/tv_21"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="16dp"
-                android:text="@string/sdk_bluetooth_conn_reboot"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="@string/sdk_bluetooth_conn_bike_not_found"
                 android:textColor="#ffffff" />
 
 
