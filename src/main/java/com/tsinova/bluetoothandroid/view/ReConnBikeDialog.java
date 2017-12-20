@@ -93,7 +93,7 @@ public class ReConnBikeDialog extends Dialog {
 			if (SingletonBTInfo.INSTANCE.isHasHotline()){
 				ll_hotline.setVisibility(View.VISIBLE);
 			}else {
-				ll_hotline.setVisibility(View.INVISIBLE);
+				ll_hotline.setVisibility(View.GONE);
 			}
 
 			View btn_1 = layout.findViewById(R.id.btn_1);

@@ -127,8 +127,8 @@ public class ConnBikeActivity extends FragmentActivity implements View.OnClickLi
             llHotline.setVisibility(View.VISIBLE);
             llHotline2.setVisibility(View.VISIBLE);
         }else {
-            llHotline.setVisibility(View.INVISIBLE);
-            llHotline2.setVisibility(View.INVISIBLE);
+            llHotline.setVisibility(View.GONE);
+            llHotline2.setVisibility(View.GONE);
         }
 
         btn1.setOnClickListener(this);
