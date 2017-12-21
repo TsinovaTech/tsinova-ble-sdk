@@ -203,7 +203,21 @@
             android:id="@+id/rl_conn_fail"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="0dp"
+            android:paddingBottom="3dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="0dp"
+                android:text="@string/sdk_bluetooth_conn_communication_failure"
+                android:textColor="#ffffff"
+                android:textSize="21sp" />
 
 
             <TextView
@@ -241,11 +255,11 @@
                 android:id="@+id/ll_hotline2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
+                android:layout_below="@id/btn_2"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="20dp"
                 android:gravity="bottom"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/tv_23"
@@ -303,17 +317,6 @@
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/tv_21"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_centerInParent="true"
-                android:layout_marginTop="120dp"
-                android:text="@string/sdk_bluetooth_conn_communication_failure"
-                android:textColor="#ffffff"
-                android:textSize="21sp" />
 
 
         </RelativeLayout>
