@@ -82,9 +82,22 @@
             android:id="@+id/rl_serach_fail"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="0dp"
+            android:paddingBottom="3dp"
+            android:gravity="center"
             android:visibility="gone">
 
+            <TextView
+                android:id="@+id/tv_11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="0dp"
+                android:text="@string/sdk_bluetooth_conn_search_failure"
+                android:textColor="#ffffff"
+                android:textSize="21sp" />
 
             <TextView
                 android:id="@+id/tv_12"
@@ -121,9 +134,9 @@
                 android:id="@+id/ll_hotline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
+                android:layout_below="@id/btn_1"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="0dp"
                 android:gravity="bottom"
                 android:orientation="vertical">
 
@@ -181,18 +194,6 @@
                     android:textSize="12sp" />
 
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/tv_11"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_centerInParent="true"
-                android:layout_marginTop="120dp"
-                android:text="@string/sdk_bluetooth_conn_search_failure"
-                android:textColor="#ffffff"
-                android:textSize="21sp" />
 
 
         </RelativeLayout>
@@ -327,6 +328,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="20dp"
+            android:visibility="visible"
             >
 
             <ImageView
